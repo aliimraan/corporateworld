@@ -9,7 +9,7 @@ export default function Login() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');
     const history=useHistory()
-    
+
     const submitHandler=(e)=>{
         e.preventDefault();
 
@@ -43,7 +43,7 @@ export default function Login() {
             <div className="card card2">
             
                 <div className="my-auto mx-md-5 px-md-5 right">
-                <button className="btn btn-white corporate">Corporate Login</button>
+                <button className="btn btn-white corporate" onClick={()=>history.push('/corporate_login')}>Corporate Login</button>
 
                     <h3 className="text-white">We are more than just a company</h3> 
                     <small className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
