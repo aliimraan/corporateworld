@@ -6,10 +6,7 @@ export default function Forget() {
     return (
         <div>
                 
-                    <Container>
-                        <Row>
-                            <Col md={2}></Col>
-    <Col md = {8}>
+                   
         <div className="form-gap"></div>
             <div className="container">
                 <div className="row">
@@ -42,10 +39,8 @@ export default function Forget() {
                     </div>
                     </div>
                 </div>
-            </div></Col>
-                <Col md = {2}></Col>
-                        </Row>
-                    </Container>
+            </div>
+                
                 </div>
 
 
