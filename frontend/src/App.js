@@ -15,6 +15,7 @@ function App() {
       <Route path="/register" component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/login/forget_pass" component={Forget} />
+      <Route path="/login/forget_pass" component={Forget} />
     </Switch>
      
 =======
