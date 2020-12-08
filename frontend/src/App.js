@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/login/Login';
+import Forget from './components/Forget';
+
+
 
 
 
 function App() {
   return (
     <div>
-      <Login/>
+      <Forget/>
     </div>
     
   );
