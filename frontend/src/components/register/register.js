@@ -27,7 +27,7 @@ export default function Register() {
         axiosInstance.post('/api/register/create',data).then(data=>{
             console.log(data)
         }).catch(err=>{ 
-            setError(err[0].message)
+            setError(err.response.data.error)
         })
         
     }

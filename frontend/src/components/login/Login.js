@@ -3,16 +3,34 @@ import { Container, Row , Col } from 'react-bootstrap';
 import Input from '../../container/Input'
 import './index.css'
 import {useHistory} from 'react-router-dom'
+import axiosInstance from '../../helpers'
 
 
 export default function Login() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');
+    const [error,setError]=useState('');
     const history=useHistory()
 
     const submitHandler=(e)=>{
         e.preventDefault();
-
+        const data={email,pass}
+        axiosInstance.post('/api/user/login',data).then(data=>{
+            if(data.status==200){
+                localStorage.setItem('token',data.data.token)
+                localStorage.setItem('email',data.data.user.email)
+                localStorage.setItem('fullname',data.data.user.fullname)
+                localStorage.setItem('id',data.data.user._id)
+                history.push('/')
+            }
+            
+        }).catch(err=>{ 
+            if(err){
+                err.response.data.error?setError(err.response.data.error)
+                :setError(err.response.data.msg)
+            }
+           
+        })
     }
     return (
         <div>
@@ -25,6 +43,9 @@ export default function Login() {
                         <div className="row justify-content-center px-3 mb-3"> </div>
                         <h3 className="mb-5 text-center heading">Welcome Back</h3>
                         <h6 className="msg-info">Please login to your account</h6>
+                        <div className="alert alert-danger" role="alert" style={error===''?{display:"none"}:{display:"block"}}>
+                                {error}
+                            </div>
                     <form onSubmit={submitHandler}>
                         <Input type="text" placeholder="Enter Email" label="E-mail" onChange={(e)=>setEmail(e.target.value)} />
                         <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPassword(e.target.value)} />

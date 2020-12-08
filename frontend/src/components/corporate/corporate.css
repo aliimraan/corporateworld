@@ -1,168 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+
+* {
+  box-sizing: border-box;
+}
 body {
-    color: rgb(255, 255, 255);
-    overflow-x: hidden;
-    height: 100%;
-    
-    background-repeat: no-repeat
+  background: #1C8EF9 !important;
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
 }
 
-input,
-textarea {
-    background-color: #F3E5F5;
-    border-radius: 50px !important;
-    padding: 12px 15px 12px 15px !important;
-    width: 100%;
-    box-sizing: border-box;
-    border: none !important;
-    border: 1px solid #F3E5F5 !important;
-    font-size: 16px !important;
-    color: #000 !important;
-    font-weight: 400
+h1,h2,h3,h4,h5,h6,label,span {
+  font-weight: 500;
+  font-family: 'Fira Sans', sans-serif;
 }
 
-input:focus,
-textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #D500F9 !important;
-    outline-width: 0;
-    font-weight: 400
+body, html, .App, #root, .auth-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-light {
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
 }
 
-.card {
-    border-radius: 0;
-   border : 1px solid rgb(77, 77, 77);
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
 }
 
-.card3 {
-    width: 50%;
-    background-image: linear-gradient(to right, #ffffff, #6a8cff) ;   
-    padding: 40px 30px 10px 30px;
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
 }
 
-.card2 {
-    width: 50%;
-    background-image: linear-gradient(to right, #FFD54F, #D500F9);
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
 }
 
-#logo {
-    width: 70px;
-    height: 60px
+.custom-control-label {
+  font-weight: 400;
 }
 
-.heading {
-    margin-bottom: 60px !important
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
 }
 
-::placeholder {
-    color: #000 !important;
-    opacity: 1
-}
-
-:-ms-input-placeholder {
-    color: #000 !important
-}
-
-::-ms-input-placeholder {
-    color: #000 !important
-}
-
-.form-control-label {
-    font-size: 12px;
-    margin-left: 15px
-}
-
-.msg-info {
-    padding-left: 15px;
-    margin-bottom: 30px
-}
-
-.btn-color {
-    border-radius: 50px;
-    color: #fff;
-    background-image: linear-gradient(to right, #FFD54F, #D500F9);
-    padding: 15px;
-    cursor: pointer;
-    border: none !important;
-    margin-top: 40px
-}
-
-.btn-color:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #D500F9, #FFD54F)
-}
-
-.btn-white {
-    border-radius: 50px;
-    color: #D500F9;
-    background-color: #fff;
-    padding: 8px 40px;
-    cursor: pointer;
-    border: 2px solid #D500F9 !important
-}
-
-.btn-white:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #FFD54F, #D500F9)
-}
-
-.corporate{
-    width : 100%;
-    margin-top: -50px;
-}
-
-a {
-    color: #000
-}
-
-a:hover {
-    color: #000
-}
-
-.bottom {
-    width: 100%;
-    margin-top: 50px !important
-}
-
-.sm-text {
-    font-size: 15px
-}
-
-@media screen and (max-width: 992px) {
-    .card1 {
-        width: 100%;
-        padding: 40px 30px 10px 30px
-    }
-
-    .card2 {
-        width: 100%
-    }
-
-    .right {
-        margin-top: 100px !important;
-        margin-bottom: 100px !important
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 10px !important
-    }
-
-    .card2 {
-        padding: 10px
-    }
-
-    .right {
-        margin-top: 50px !important;
-        margin-bottom: 50px !important
-    }
+.forgot-password a {
+  color: #167bff;
 }

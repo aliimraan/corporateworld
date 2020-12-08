@@ -36,12 +36,12 @@ exports.userLoginController=(req,res)=>{
                     const token=jwt.sign({_id:data[0]._id,role:data[0].role},process.env.JWT_AUTH)
                      res.status(200).json({token,user,'msg':'you are logged in'})
                 }else{
-                    return res.status(400).json({'msg':'wrong password'})
+                    return res.status(400).json({'msg':'Wrong Password'})
                 }
             })
         }
     }).catch(err=>{
-        res.status(400).json({'msg':'invalid email'})
+        res.status(400).json({'msg':'Invalid Email'})
     })
 }
 
