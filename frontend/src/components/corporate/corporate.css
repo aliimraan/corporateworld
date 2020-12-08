@@ -42,9 +42,9 @@ button:focus {
    border : 1px solid rgb(77, 77, 77);
 }
 
-.card1 {
+.card3 {
     width: 50%;
-    background-image: linear-gradient(to right, #d3d2d0, #2a262a) ;   
+    background-image: linear-gradient(to right, #ffffff, #6a8cff) ;   
     padding: 40px 30px 10px 30px;
 }
 

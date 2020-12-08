@@ -14,7 +14,7 @@ export default function Corporate() {
           <div className="container px-4 py-5 mx-auto">
     <div className="card card0">
         <div className="d-flex flex-lg-row flex-column-reverse">
-            <div className="card card1">
+            <div className="card card3">
                 <div className="row justify-content-center my-auto">
                     <div className="col-md-8 col-10 my-5">
                         <div className="row justify-content-center px-3 mb-3"> </div>
