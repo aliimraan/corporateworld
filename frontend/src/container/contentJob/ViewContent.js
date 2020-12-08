@@ -3,55 +3,42 @@ import React from 'react'
 export default function ViewContent() {
     return (
         <div>
-        <div className="content">
-        <div className="container-fluid">
         <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-8">
-              <div class="card">
+            <div class="col-md-12">
+              <div class="card" style={{marginTop:150+"px"}}>
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Edit Profile</h4>
+                  <h4 class="card-title ">Applied Jobs</h4>
+                  <p class="card-category"> Here is a You Applied</p>
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Old Password</label>
-                          <input type="text" class="form-control" />
-                        </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th>Salary</th>
+                      </thead>
+                      <tbody class=" text-primary">
+                        <tr>
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Country</td>
+                            <td>City</td>
+                            <td>Salary</td>
+                        </tr>
+                      </tbody>
+                      </table>
                       </div>
-                      
-                     
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">New Passworde</label>
-                          <input type="text" class="form-control" />
-                        </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Confirm Password</label>
-                          <input type="text" class="form-control" />
-                        </div>
                       </div>
-                    </div>
-                   
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            
-        </div>
-        </div>
-        </div>  
-        </div>
-        </div>  
+                      </div>
+                      </div>
+                      </div>
+                      </div>
         </div>
     )
 }

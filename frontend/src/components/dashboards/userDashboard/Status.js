@@ -1,8 +1,9 @@
 import React from 'react'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import Mainpanel from '../../../container/Main/Mainpanel'
-import ViewContent from '../../../container/contentJob/ViewContent'
+import StatusContent from '../../../container/contentJob/StatusContent'
 import {Row,Col} from 'react-bootstrap'
+import Navbar from '../../../container/Content/Navbar'
 export default function ViewApp() {
     return (
         <div>
@@ -12,12 +13,13 @@ export default function ViewApp() {
                 [
                     {label:'Job Application',icon:'dashboard',link:'/user_dashboard'},
                     {label:'View Application',icon:'person',link:'/user_dashboard/view_application'},
-                    {label:'Status',icon:'table',link:'/user_dashboard/status'},
+                    {label:'Status',icon:'table',link:'/user_dashboard/status',active:"active"},
                 ]
             } />
             </Col>
             <Col md={9}>
-            <ViewContent/>
+            <Navbar label={"Manage Password"}/>
+            <StatusContent/>
             </Col>
         </Row>
         </div>

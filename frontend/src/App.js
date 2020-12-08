@@ -21,8 +21,8 @@ function App() {
         <Route path="/login/forget_pass" component={Forget} />
         <Route path="/corporate_login" component={Corporate} />
         <Route path="/user_dashboard" exact component={userDasboard} />
-        <Route path="/user_dashboard/view_application"  component={ViewApp} />
-        <Route path="/user_dashboard/status"  component={Status} />
+        <Route path="/user_dashboard/view_application"  exact component={ViewApp} />
+        <Route path="/user_dashboard/status"  exact component={Status} />
   
       </Switch>
     </div>

@@ -9,7 +9,7 @@ export default function JobContent() {
           
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              <div className="card mt-5">
+              <div className="card" style={{marginTop:150+"px"}}>
                 <div className="card-header card-header-tabs card-header-primary">
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
