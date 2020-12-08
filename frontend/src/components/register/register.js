@@ -3,6 +3,7 @@ import Input from '../../container/Input';
 import {Container,Row,Col} from 'react-bootstrap'
 import {useHistory} from 'react-router-dom'
 import './register.css'
+import axiosInstance from '../../helpers/index'
 export default function Register() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');
@@ -20,15 +21,18 @@ export default function Register() {
             return setError('password not matched')
         }
         const data={fullname,username,email,pass,dob,mobile}
+        axiosInstance.post('/api/register/create',data).then(data=>{
+            console.log(data)
+        }).catch(err=>{ 
+            setError(err[0].message)
+        })
         
     }
     return (
     <div>
         <Container>
             <Row>
-              
-             
-                <div className="card card1">
+              <div className="card card1">
                 <div className="row justify-content-center my-5">
                     <div className="col-md-12 col-10 my-8">
                         <div className="row justify-content-center px-3 mb-3"> </div>
