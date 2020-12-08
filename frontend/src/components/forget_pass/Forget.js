@@ -1,8 +1,12 @@
-import React from 'react'
-import { Container, Row ,Col} from 'react-bootstrap'
+import React , {useState} from 'react'
 import './forget.css'
-
+import Input from '../container/Input'
 export default function Forget() {
+    const [email,setEmail]=useState('');
+    const [reset,setReset]=useState('');
+    const submitHandler=(e)=>{
+        e.preventDefault();
+    }
     return (
         <div>
                 
@@ -18,20 +22,12 @@ export default function Forget() {
                         <h2 className="text-center">Forgot Password?</h2>
                         <p>You can reset your password here.</p>
                         <div className="panel-body">
-            
-                            <form id="register-form" role="form" autocomplete="off" className="form" method="post">
-            
-                            <div className="form-group">
-                                <div className="input-group">
-                                <span className="input-group-addon" ><i className="glyphicon glyphicon-envelope color-blue" ></i></span>
-                                <input id="email" name="email" placeholder="email address" className="form-control"  type="email"/>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <input name="recover-submit" className="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit" />
+                          <form onSubmit={submitHandler} id="register-form" role="form" autocomplete="off" className="form" method="post">
+                            <Input type="text" placeholder="Enter Email" onChange={(e)=>setEmail(e.target.value)} />
+                             <div className="form-group">
+                                <input name="recover-submit" className="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit" onChange={(e)=>setReset(e.target.value)} />
                             </div>
                             
-                            <input type="hidden" className="hide" name="token" id="token" value="" /> 
                             </form>
                         </div>
                         </div>

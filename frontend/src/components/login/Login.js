@@ -2,11 +2,14 @@ import React ,{useState} from 'react'
 import { Container, Row , Col } from 'react-bootstrap';
 import Input from '../../container/Input'
 import './index.css'
+import {useHistory} from 'react-router-dom'
 
 
 export default function Login() {
     const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
+    const [pass,setPassword]=useState('');
+    const history=useHistory()
+    
     const submitHandler=(e)=>{
         e.preventDefault();
 
@@ -30,11 +33,11 @@ export default function Login() {
                                 <button className="btn-block btn-color">Reset</button>
                             </div>
                     </form>
-                        <div className="row justify-content-center my-2"> <a href="#"><small className="text-muted">Forgot Password?</small></a> </div>
+                        <div className="row justify-content-center my-2"> <a href="/login/forget_pass"><small className="text-muted">Forgot Password?</small></a> </div>
                     </div>
                 </div>
                 <div className="bottom text-center mb-5">
-                    <p href="#" className="sm-text mx-auto mb-3">Don't have an account?<button className="btn btn-white ml-2">Create new</button></p>
+                    <p className="sm-text mx-auto mb-3">Don't have an account?<button className="btn btn-white ml-2" onClick={()=>history.push('/register')}>Create new</button></p>
                 </div>
             </div>
             <div className="card card2">
