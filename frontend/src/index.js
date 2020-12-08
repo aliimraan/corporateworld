@@ -8,7 +8,7 @@ import {BrowserRouter} from 'react-router-dom'
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <App />hello
   </React.StrictMode>
   </BrowserRouter>
  ,
