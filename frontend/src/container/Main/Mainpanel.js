@@ -7,7 +7,6 @@ export default function Mainpanel() {
         <div class="main-panel">
             <Navbar />
             <Content />
-            
         </div>
     )
 }
