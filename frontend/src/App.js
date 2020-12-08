@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 
-
 import Forget from './components/forget_pass/Forget';
 import {Switch,Route} from 'react-router-dom'
 import Register from './components/register/Register';
@@ -15,16 +14,16 @@ function App() {
       <Route path="/register" component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/login/forget_pass" component={Forget} />
-      <Route path="/login/forget_pass" component={Forget} />
     </Switch>
-     
+
+
 
 </div>
 
 
+)
+}
 
 
+export default App ;
 
-
-
-export default App;
