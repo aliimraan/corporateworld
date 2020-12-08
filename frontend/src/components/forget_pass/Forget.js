@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
 import './forget.css'
-import Input from '../container/Input'
+import Input from '../../container/Input'
 export default function Forget() {
     const [email,setEmail]=useState('');
     const [reset,setReset]=useState('');
