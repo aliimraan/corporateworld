@@ -11,7 +11,7 @@ export default function ViewApp() {
             <Col md={3}>
             <Sidebar list={
                 [
-                    {label:'Job Application',icon:'dashboard',link:'/user_dashboard'},
+                    {label:'Job Application',icon:'dashboard',link:'/user_dashboard/job_application/:id'},
                     {label:'View Application',icon:'person',link:'/user_dashboard/view_application',active:"active"},
                     {label:'Status',icon:'table',link:'/user_dashboard/status'},
                 ]

@@ -11,7 +11,7 @@ const {signUpRequestValidator,signUpRequestValidatorResult,loginRequestValidator
 
 router.post('/register/create',signUpRequestValidator,signUpRequestValidatorResult,registerController)
 router.post('/user/login',loginRequestValidator,loginRequestValidatorResult,userLoginController)
-router.post('/user/job/apply',authenticate,userMiddleware,userAppliedJob)
+
 router.post('/user/status/changePassword/:id',authenticate,userMiddleware,changePassword)
 
 module.exports=router;

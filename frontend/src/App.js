@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" exact component={Login} />
         <Route path="/login/forget_pass" component={Forget} />
         <Route path="/corporate_login" component={Corporate} />
-        <Route path="/user_dashboard" exact component={userDasboard} />
+        <Route path="/user_dashboard/job_application/:id" exact component={userDasboard} />
         <Route path="/user_dashboard/view_application"  exact component={ViewApp} />
         <Route path="/user_dashboard/status"  exact component={Status} />
   

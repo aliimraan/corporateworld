@@ -1,7 +1,27 @@
-import React from 'react'
-import { Button } from 'react-bootstrap'
+import React,{useState} from 'react'
+import axiosInstance from '../../helpers'
 
-export default function JobContent() {
+export default function JobContent({singleJob}) {
+  const [isAlertActive,setAlertActive]=useState('')
+
+  const {role,profile,description}=singleJob
+
+  const submitHandler=()=>{
+    const userId=localStorage.getItem('id');
+    const token=localStorage.getItem('token');
+      const dataToSubmit={...singleJob,userId}
+      const config={
+        'headers':{'jwt_react':token}
+      }
+      axiosInstance.post('/application/user/job/apply',dataToSubmit,config).then(data=>{
+        if(data.status==200){
+          setAlertActive('active')
+        }
+      }).catch(err=>{
+        console.log(err)
+      })
+      
+  }
     return (
         <div className="content">
         <div className="container-fluid">
@@ -9,6 +29,12 @@ export default function JobContent() {
           
           <div className="row">
             <div className="col-lg-12 col-md-12">
+              <div className="alert alert-success" role="alert" style={isAlertActive==='active'?{display:'block'}:{display:'none'}}>
+              <h4 className="alert-heading">Well done!</h4>
+              <p>Aww yeah, you successfully submitted the job application. All the best .</p>
+              <hr/>
+              <p class="mb-0"><button className="btn btn-success">Browse More jobs</button></p>
+              </div>
               <div className="card" style={{marginTop:150+"px"}}>
                 <div className="card-header card-header-tabs card-header-primary">
                   <div className="nav-tabs-navigation">
@@ -25,19 +51,19 @@ export default function JobContent() {
                         <tbody>
                           <tr>
                             <td><h4>Role </h4></td>
-                            <td>Sign contract for "What are conference organizers afraid of?"</td>
+                            <td>{role}</td>
                           </tr>
                           <tr>
                             <td><h4>profile </h4></td>
-                            <td>Sign contract for "What are conference organizers afraid of?"</td>
+                            <td>{profile}</td>
                           </tr>
                           <tr>
                             <td><h4>Description </h4></td>
-                            <td>Sign contract for "What are conference organizers afraid of?"</td>
+                            <td>{description}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <button className="btn btn-primary">apply</button>
+                      <button className="btn btn-primary" onClick={submitHandler}>apply</button>
                       </div>
                       </div>
                       </div>

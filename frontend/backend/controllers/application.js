@@ -46,3 +46,13 @@ exports.declinedJobs=(req,res)=>{
     })
    
 }
+exports.singleJobDetail=(req,res)=>{
+    const jobId=req.params.id
+    jobModel.findById(jobId).then(data=>{
+        return res.status(200).json({data})
+    }).catch(err=>{
+        return res.status(400).json({err})
+     })
+   
+   
+}
