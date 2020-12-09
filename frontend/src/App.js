@@ -10,6 +10,11 @@ import Corporate from './components/corporate/Corporate';
 import userDasboard from './components/dashboards/userDashboard/JobApp';
 import ViewApp from './components/dashboards/userDashboard/ViewApp';
 import Status from './components/dashboards/userDashboard/Status';
+import hrDashboard from './components/dashboards/hrDashboard/Viewapp';
+import Approve from './components/dashboards/hrDashboard/Approve';
+import Account from './components/dashboards/hrDashboard/Account';
+import Approveuser from './container/Content/contenthr/approve/Approveuser';
+
 
 function App() {
   return (
@@ -23,6 +28,11 @@ function App() {
         <Route path="/user_dashboard" exact component={userDasboard} />
         <Route path="/user_dashboard/view_application"  exact component={ViewApp} />
         <Route path="/user_dashboard/status"  exact component={Status} />
+        <Route path="/hr_dashboard" exact component={hrDashboard} />
+        <Route path="/hr_dashboard/approvedec_app" exact component={Approve} />
+        <Route path="/hr_dashboard/account" exact component={Account} />
+        <Route path="/contenthr/approve" exact component={Approveuser} />
+
   
       </Switch>
     </div>

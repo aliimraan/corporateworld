@@ -12,7 +12,7 @@ export default function JobApp() {
             <Col md={3}>
             <Sidebar list={
                 [
-                    {label:'Job Application',icon:'dashboard',link:'/user_dashboard',active:"active"},
+                    {label:'Job Content Application',icon:'dashboard',link:'/user_dashboard',active:"active"},
                     {label:'View Application',icon:'person',link:'/user_dashboard/view_application'},
                     {label:'Status',icon:'table',link:'/user_dashboard/status'},
                 ]
