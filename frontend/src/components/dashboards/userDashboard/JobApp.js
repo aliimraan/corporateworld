@@ -30,7 +30,11 @@ export default function JobApp(props) {
             <Col md={3}>
             <Sidebar list={
                 [
-                    {label:'Job Application',icon:'dashboard',link:`/user_dashboard/job_application/${perJobId}`,active:"active"},
+<<<<<<< HEAD
+
+=======
+                    {label:'Job Content Application',icon:'dashboard',link:'/user_dashboard',active:"active"},
+>>>>>>> 0b0b96470472cf6e518e898c993c46a123ed5b04
                     {label:'View Application',icon:'person',link:'/user_dashboard/view_application'},
                     {label:'Status',icon:'table',link:'/user_dashboard/status'},
                 ]
