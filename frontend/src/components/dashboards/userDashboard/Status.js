@@ -3,7 +3,7 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import StatusContent from '../../../container/contentJob/StatusContent'
 import {Row,Col} from 'react-bootstrap'
 import Navbar from '../../../container/Content/Navbar'
-export default function ViewApp() {
+
 
 export default function Status() {
    
