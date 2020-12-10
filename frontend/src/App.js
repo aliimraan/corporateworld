@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-
 import Forget from './components/forget_pass/Forget';
 import {Switch,Route} from 'react-router-dom'
 import Register from './components/register/Register'
@@ -42,17 +40,10 @@ function App() {
         <Route path="/admin_dashboard/decline_apps" exact component={Decline} />
         <Route path="/admin_dashboard/jobs" exact component={Jobs} />
         <Route path="/contentadmin/editadmin" exact component={Editadmin} />
-
-        
-
-
-
-  
       </Switch>
     </div>
 )
 }
-
 
 export default App ;
 
