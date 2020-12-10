@@ -1,6 +1,34 @@
 import React from 'react'
 
-export default function Declineadmin() {
+export default function Declineadmin({record}) {
+  const showRecord=(el)=>{
+    console.log(el)
+    if(el[0]===undefined){
+      return<h4>loading...</h4>
+    }
+    return el[0].map((item,index)=>{
+      if(el[0]===undefined){
+        return <h3>loading...</h3>
+      }
+    
+      console.log(item)
+      const {role,profile,createdAt}=item
+      const {fullname,email}=item.userId
+      
+      index++
+      return (
+        <tr>
+        <td>{index}</td>
+        <td>{fullname}</td>
+        <td>{email}</td>
+        <td>{role}</td>
+        <td>{profile}</td>
+        <td>{createdAt.substr(0,10)}</td>
+        </tr>
+      )
+    })
+  }
+  
     return (
         <div>
         <div class="content">
@@ -17,19 +45,14 @@ export default function Declineadmin() {
                     <table class="table">
                       <thead class=" text-primary">
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Salary</th>
+                        <th>CANDIDATE NAME</th>
+                        <th>CANDIDATE EMAIL</th>
+                        <th>ROLE</th>
+                        <th>PROFILE</th>
+                        <th>REJECTED ON</th>
                       </thead>
                       <tbody class=" text-primary">
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Country</td>
-                            <td>City</td>
-                            <td>Salary</td>
-                        </tr>
+                       {showRecord(record)}
                       </tbody>
                       </table>
                       </div>

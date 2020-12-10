@@ -5,7 +5,7 @@ import Input from '../../../Input';
 
 
 
-export default function Editadmin(props) {
+export default function EditUser(props) {
     const [email,setEmail]=useState('hello');
     const [username,setUsername]=useState('');
     const [fullname,setName]=useState('');

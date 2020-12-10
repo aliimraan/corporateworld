@@ -8,6 +8,7 @@ exports.jobCreate=(req,res)=>{
     newJobModel.save().then(data=>{
         res.status(200).json({data,msg:"job created successfully"})
     }).catch(err=>{
+        console.log(err)
         res.status(500).json({err})
     })
 }
@@ -42,12 +43,13 @@ exports.approvedJobs=(req,res)=>{
 }
 
 exports.showApprovedJobs=(req,res)=>{
-    approvedJobs.find().then(data=>{
-        res.status(200).json({data})
+    approvedJobs.find().populate('userId').populate('jobId').then(data=>{
+       return res.status(200).json({data})
     }).catch(err=>{
-        res.status(400).json({err})
+        return res.status(400).json({err})
     })
 }
+
 exports.declinedJobs=(req,res)=>{
     const newDeclinedJobModel=new declinedJobModel(req.body)
     newDeclinedJobModel.save().then(data=>{
@@ -55,6 +57,14 @@ exports.declinedJobs=(req,res)=>{
         //send email to user that u r not selected
     }).catch(err=>{
         res.status(400).json({err})
+    })
+   
+}
+exports.showDeclinedJobs=(req,res)=>{
+   declinedJobModel.find().populate('userId').then(data=>{
+        return res.status(200).json({data})
+    }).catch(err=>{
+        return res.status(400).json({err})
     })
    
 }

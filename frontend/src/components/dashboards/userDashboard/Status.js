@@ -7,8 +7,6 @@ import Navbar from '../../../container/Content/Navbar'
 
 export default function Status() {
    
-
-    
     return (
         <div>
         <Row>

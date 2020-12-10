@@ -1,14 +1,18 @@
 import React,{useEffect,useState} from 'react'
 import axiosInstance from '../../helpers'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 export default function Home() {
     const [allJobs,setAllJobs]=useState([])
-
+    const [Token,setToken]=useState([])
     useEffect(()=>{
         getAllJobs()
         
     },[])
+    if(localStorage.getItem('token')){
+        const token=localStorage.getItem('token')
+        return setToken(token)
+    }
 
     const getAllJobs=()=>{
         axiosInstance.get('/application/job/show/all').then(data=>{
@@ -38,11 +42,10 @@ export default function Home() {
             )
         })
     }
-
+   
     return (
         <div>
             <h1>The Test</h1>
-            {console.log(allJobs)}
             {renderAllJobs(allJobs[0])}
         </div>
     )

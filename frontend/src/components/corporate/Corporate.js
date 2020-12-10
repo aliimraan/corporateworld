@@ -1,51 +1,64 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {Row,Col} from 'react-bootstrap'
 import './corporate.css'
+import axiosInstance from '../../helpers'
 
 export default function Corporate() {
+	const [role,setRole]= useState('')
+	const [email,setEmail]= useState('')
+	const [pass,setPass]= useState('')
+	const history=useHistory()
+
+	const submitHandler=(e)=>{
+		e.preventDefault()
+		const FormDate={email,pass,role}
+		
+		axiosInstance.post('/api/user/login',FormDate).then(data=>{
+			if(data.status==200){
+				if(role==='admin'){
+					return history.push('/admin_dashboard/view_apps')
+				}else{
+					return history.push('hr_dashboard')
+				}
+			}
+		}).catch(err=>{
+			console.log(err)
+		})
+
+		
+	}
     return (
         <div className="limiter">
 		<div className="container-login100">
 			<div className="wrap-login100">
-            
-				<form className="login100-form validate-form">
-                
-                
-                    
-					
-
-					<span className="login100-form-title p-b-43">
+            <form className="login100-form validate-form" onSubmit={submitHandler}>
+                <span className="login100-form-title p-b-43">
 						Login to continue
 					</span>
-					
-                    
-					
-					<div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input className="input100" type="text" name="email" />
+						<div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<span className="label-input100">choose your role</span>
+						<select className="input100" type="text"  onChange={(e)=>setRole(e.target.value)}>
+							<option value="hr">as hr</option>
+							<option value="admin">as admin</option>
+						</select>
 						<span className="focus-input100"></span>
-						<span className="label-input100">Email</span>
+						
 					</div>
-					
-                   
-					
+					<span className="label-input100">Email</span>
+						<div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input className="input100" type="text" onChange={(e)=>setEmail(e.target.value)}/>
+						<span className="focus-input100"></span>
+						
+					</div>
 					<div className="wrap-input100 validate-input" data-validate="Password is required">
-						<input className="input100" type="password" name="pass" />
+					<span className="label-input100">Password</span>
+						<input className="input100" type="password" onChange={(e)=>setPass(e.target.value)} />
 						<span className="focus-input100"></span>
-						<span className="label-input100">Password</span>
+						
 					</div>
-
-					<div className="flex-sb-m w-full p-t-3 p-b-32">
-                    <input className="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
-							<label className="label-checkbox100" for="ckb1">
-								Login As Admin
-							</label>
-
-					
-					</div>
-			
-
-					<div className="container-login100-form-btn">
-						<button className="login100-form-btn">
+<div className="container-login100-form-btn">
+						<button type="submit" className="login100-form-btn">
 							Login
 						</button>
 					</div>

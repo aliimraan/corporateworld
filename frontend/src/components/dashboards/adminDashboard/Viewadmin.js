@@ -1,11 +1,45 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import {Row,Col} from 'react-bootstrap'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Viewadminn from '../../../container/Content/contentadmin/Viewadminn'
+import axiosInstance from '../../../helpers'
 
 
 export default function Viewadmin() {
+    const [hrList,setHrList]=useState('')
+    const [userList,setUserList]=useState('')
+
+    useEffect(()=>{
+        getHrList()
+        getUserList()
+    },[])
+
+    const getHrList=()=>{
+        const token=localStorage.getItem('token')
+        const config={
+            'headers':{'jwt_react':token}
+        }
+        axiosInstance.get('/api/hr/registered/show/all',config).then(data=>{
+            setHrList([data.data])
+        }).catch(err=>{
+            console.log(err)
+        })
+        
+    }
+
+    const getUserList=()=>{
+        const token=localStorage.getItem('token')
+        const config={
+            'headers':{'jwt_react':token}
+        }
+        axiosInstance.get('api/user/registered/show/all',config).then(data=>{
+            setUserList([data.data])
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+  
     return (
         <div>
         <Row>
@@ -23,7 +57,7 @@ export default function Viewadmin() {
             </Col>
                 <Col md={9}>
                     <Navbar label={"View Application"} />
-                   <Viewadminn />
+                   <Viewadminn hrList={hrList} userList={userList}/>
                 </Col>
             </Row>
             </div>

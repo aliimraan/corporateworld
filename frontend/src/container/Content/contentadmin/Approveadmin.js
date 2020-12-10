@@ -1,6 +1,38 @@
 import React from 'react'
 
-export default function Approveadmin() {
+export default function Approveadmin({record}) {
+
+  const showRecord=(el)=>{
+    console.log(el)
+    if(el[0]===undefined){
+      return<h4>loading...</h4>
+    }
+    return el[0].map((item,index)=>{
+      if(el[0]===undefined){
+        return <h3>loading...</h3>
+      }
+      console.log(item)
+      const {conference_link,interview_date,createdAt}=item
+      if(item.userId===null){
+        return 'user is deleted'
+      }
+      
+      const {role}=item.jobId
+      const {fullname}=item.userId
+      index++
+      return (
+        <tr>
+        <td>{index}</td>
+        <td>{fullname}</td>
+        <td>{role}</td>
+        <td>{interview_date.substr(0,10)}</td>
+        <td>{conference_link}</td>
+        <td>{createdAt.substr(0,10)}</td>
+        </tr>
+      )
+    })
+  }
+  
     return (
         <div>
         <div class="content">
@@ -17,19 +49,14 @@ export default function Approveadmin() {
                     <table class="table">
                       <thead class=" text-primary">
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Salary</th>
+                        <th>CANDIDATE Name</th>
+                        <th>FOR </th>
+                        <th>INTERVIEW DATE</th>
+                        <th>CONFERENCE LINK</th>
+                        <th>APPROVED ON</th>
                       </thead>
                       <tbody class=" text-primary">
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Country</td>
-                            <td>City</td>
-                            <td>Salary</td>
-                        </tr>
+                        {showRecord(record)}
                       </tbody>
                       </table>
                       </div>

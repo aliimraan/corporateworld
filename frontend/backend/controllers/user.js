@@ -119,3 +119,54 @@ exports.userChangePassword=(req,res)=>{
         return res.status(400).json({err})
     })
 }
+
+exports.showAllRegisteredHr=(req,res)=>{
+    registerModel.find({role:'hr'}).then(data=>{
+        res.status(200).json({data})
+    }).catch(err=>{
+        res.status(400).json({err})
+    })
+}
+
+exports.showAllRegisteredUsers=(req,res)=>{
+    registerModel.find({role:'user'}).then(data=>{
+        res.status(200).json({data})
+    }).catch(err=>{
+        res.status(400).json({err})
+    })
+}
+
+exports.showOneRegisteredUsers=(req,res)=>{
+    const id=req.params.id
+    registerModel.findById(id).then(data=>{
+        return res.status(200).json({data})
+    }).catch(err=>{
+        return res.status(400).json({err})
+    })
+}
+
+exports.updateRegisteredUsers=(req,res)=>{
+    const id=req.params.id
+    const {fullname,username,email,mobile}=req.body
+    console.log(req.body)
+    registerModel.findByIdAndUpdate(id,{
+        fullname:fullname,
+        username:username,
+        email:email,
+        mobile:mobile
+
+    }).then(data=>{
+        return res.status(200).json({data,msg:"updated list"})
+    }).catch(err=>{
+        return res.status(400).json({err})
+    })
+}
+
+exports.deleteRegisteredUsers=(req,res)=>{
+    const id=req.params.id
+    registerModel.findByIdAndDelete(id).then(data=>{
+        return res.status(200).json({data})
+    }).catch(err=>{
+        return res.status(400).json({err})
+    })
+}

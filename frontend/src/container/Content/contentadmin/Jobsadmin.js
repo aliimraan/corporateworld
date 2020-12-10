@@ -1,14 +1,30 @@
-import React from 'react'
+import React,{useState} from 'react'
+import axiosInstance from '../../../helpers'
 
 export default function Jobsadmin() {
-    return (
-        
+    const [role,setRole]=useState('')
+    const [profile,setProfile]=useState('')
+    const [description,setDescription]=useState('')
+    const [error,setError]=useState('')
 
-        
-                
-                
-                
-                    <div className="card" style={{marginTop:150+"px"}}>
+    const submitHandler=(e)=>{
+        e.preventDefault();
+        if(role===''||profile===''||description===''){
+            return setError('Empty field not allowed')
+        }
+        const formdata={role,profile,description}
+        const token=localStorage.getItem('token');
+        const config={
+            'headers':{'jwt_react':token}
+        }
+        axiosInstance.post('/application/admin/job/create',formdata,config).then(data=>{
+            console.log(data)
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+    return (
+        <div className="card" style={{marginTop:150+"px"}}>
                         <div className="card-header card-header-tabs card-header-primary">
                         <div className="nav-tabs-navigation">
                             <div className="nav-tabs-wrapper">
@@ -20,21 +36,21 @@ export default function Jobsadmin() {
                         <div className="card-body">
                         <div className="tab-content">
                             <div className="tab-pane active" id="profile">
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="form-group">
                 <label for="exampleFormControlInput1">Job Title</label>
-                <input type="text" className="form-control"  placeholder="Enter Job Title"/>
+                <input type="text" className="form-control"  placeholder="Enter Job Title" onChange={(e)=>setRole(e.target.value)}/>
             </div>
             <div className="form-group">
                 <label for="exampleFormControlInput1">Job Designation</label>
-                <input type="text" className="form-control"  placeholder="Enter Job Designation"/>
+                <input type="text" className="form-control"  placeholder="Enter Job Designation" onChange={(e)=>setProfile(e.target.value)}/>
             </div>
             <div className="form-group">
                 <label for="exampleFormControlTextarea1">Job Details</label>
-                <textarea className="form-control"  rows="3"></textarea>
+                <textarea className="form-control"  rows="3" onChange={(e)=>setDescription(e.target.value)} />
             </div>
             
-            <input type="button" className="col-md-2 col-lg-2 btn btn-success"  value="POST"/>
+            <button className="col-md-2 col-lg-2 btn btn-primary">Add Job</button>
 
             
         </form>

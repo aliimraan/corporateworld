@@ -1,11 +1,22 @@
-import React from 'react'
+import React ,{useState,useEffect} from 'react'
 import {Row,Col} from 'react-bootstrap'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Approveadmin from '../../../container/Content/contentadmin/Approveadmin'
+import axiosInstance from '../../../helpers'
 
 
 export default function Approvedecline() {
+    const [record,setRecord]=useState([])
+
+    useEffect(() => {
+       axiosInstance.get('/application/job/approved/show').then(data=>{
+           setRecord([data.data.data])
+       }).catch(err=>{
+           console.log(err)
+       })
+    }, [])
+
     return (
         <div>
         <Row>
@@ -23,7 +34,7 @@ export default function Approvedecline() {
             </Col>
                 <Col md={9}>
                     <Navbar label={"Approve/Decline List"} />
-                   <Approveadmin />
+                   <Approveadmin record={record}/>
                 </Col>
             </Row>
             </div>
