@@ -54,26 +54,23 @@ exports.userAppliedJob=(req,res)=>{
 })
 }
 
-exports.viewUserAppliedJob=(req,res)=>{
-    appliedJobModel.find().then(data=>{
-      return res.status(200).json({data})
-               
-    }).catch(err=>{
-        return res.status(400).json({err})
-    })
-}
 
-exports.changePassword=(req,res)=>{
+
+exports.userChangePassword=(req,res)=>{
     const myId=req.params.id;
+    console.log(myId)
+    console.log(req.body)
     const {pass,new_pass}=req.body
     registerModel.findById(myId).then(data=>{
-        bcrypt.compare(pass,data[0].password,(err,result)=>{
+        
+        bcrypt.compare(pass,data.password,(err,result)=>{
             if(err) throw err
 
             if(result){
+                console.log(result)
                 bcrypt.hash(new_pass, 10).then((hash)=>{
                     const password=hash;
-                     registerModel.findOneAndUpdate({_id:result._id},{password:password})
+                     registerModel.findOneAndUpdate({_id:data._id},{password:password})
                      .then(data=>{
                          return res.status(200).json({msg:"password updated successfully"})
                      }).catch(err=>{

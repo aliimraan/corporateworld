@@ -31,7 +31,7 @@ function App() {
         <Route path="/hr_dashboard" exact component={hrDashboard} />
         <Route path="/hr_dashboard/approvedec_app" exact component={Approve} />
         <Route path="/hr_dashboard/account" exact component={Account} />
-        <Route path="/contenthr/approve" exact component={Approveuser} />
+        <Route path="/contenthr/approve/:id" exact component={Approveuser} />
 
   
       </Switch>

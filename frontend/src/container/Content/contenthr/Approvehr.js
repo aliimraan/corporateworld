@@ -1,6 +1,42 @@
 import React from 'react'
+import {Link, useHistory} from 'react-router-dom'
 
-export default function Approvehr() {
+export default function Approvehr({allJobs}) {
+  const history=useHistory()
+
+  const approveHandler=(id,item)=>{
+   history.push({
+      pathname:'/contenthr/approve/'+id,
+      userData:{
+          item:item
+       }
+     });
+ 
+  }
+
+  const getRecords=(el)=>{
+    if(el==undefined){
+      return<h4>loading...</h4>
+    }
+    return el.map((item,index)=>{
+      if(el===undefined){
+        return <h3>loading...</h3>
+      }
+      const {_id,role,profile,userId}=item
+      index++
+      return (
+        <tr key={index}>
+          <td>{index}</td>
+          <td>{role}</td>
+          <td>{profile}</td>
+          <td>{userId.fullname}</td>
+          <td> <button className="btn btn-success" onClick={()=>approveHandler(_id,item)}>Approve</button>
+          <button className="btn btn-danger" >Decline</button></td>
+          
+        </tr>
+      )
+    })
+  }
     return (
         <div>
         <div class="content">
@@ -16,18 +52,15 @@ export default function Approvehr() {
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Country</th>
+                        <th>S.NO</th>
+                        <th>ROLE</th>
+                        <th>PROFILE</th>
+                        <th>CANDIDATE</th>
+                        <th>ACTIONS</th>
+                        
                       </thead>
                       <tbody class=" text-primary">
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Country</td>
-                            <td> <a href ="/contenthr/approve"><button className="btn btn-success">Approve</button></a> </td>
-                            <td><button className="btn btn-danger">Decline</button></td>
-                        </tr>
+                       {getRecords(allJobs)}
                       </tbody>
                       </table>
                       </div>
