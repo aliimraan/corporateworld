@@ -4,6 +4,7 @@ import Mainpanel from '../../../container/Main/Mainpanel'
 import StatusContent from '../../../container/contentJob/StatusContent'
 import {Row,Col} from 'react-bootstrap'
 import Navbar from '../../../container/Content/Navbar'
+export default function ViewApp() {
 import axiosInstance from '../../../helpers'
 export default function Status() {
    
