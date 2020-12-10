@@ -87,3 +87,35 @@ exports.userChangePassword=(req,res)=>{
         return res.status(400).json({err})
     })
 }
+
+exports.userChangePassword=(req,res)=>{
+    const myId=req.params.id;
+    console.log(myId)
+    console.log(req.body)
+    const {pass,new_pass}=req.body
+    registerModel.findById(myId).then(data=>{
+        
+        bcrypt.compare(pass,data.password,(err,result)=>{
+            if(err) throw err
+
+            if(result){
+                console.log(result)
+                bcrypt.hash(new_pass, 10).then((hash)=>{
+                    const password=hash;
+                     registerModel.findOneAndUpdate({_id:data._id},{password:password})
+                     .then(data=>{
+                         return res.status(200).json({msg:"password updated successfully"})
+                     }).catch(err=>{
+                        return res.status(400).json({err})
+                     })
+                    
+                });
+            }else{
+                return res.status(400).json({'msg':'wrong password'})
+            }
+        })
+               
+    }).catch(err=>{
+        return res.status(400).json({err})
+    })
+}
