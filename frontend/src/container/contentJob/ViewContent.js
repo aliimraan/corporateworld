@@ -1,6 +1,27 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import axiosInstance from '../../helpers'
+export default function ViewContent({appliedJob}) {
 
-export default function ViewContent() {
+  const getRecords=(el)=>{
+    if(el[0]==undefined){
+      return<h4>loading...</h4>
+    }
+    return el[0].map((item,index)=>{
+      if(el===undefined){
+        return <h3>loading...</h3>
+      }
+      const {role,profile,description}=item
+      index++
+      return (
+        <tr key={index}>
+          <td>{index}</td>
+          <td>{role}</td>
+          <td>{profile}</td>
+          <td>{description}</td>
+        </tr>
+      )
+    })
+  }
     return (
         <div>
         <div class="content">
@@ -16,20 +37,14 @@ export default function ViewContent() {
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Salary</th>
+                        <th>S.No</th>
+                        <th>ROLE</th>
+                        <th>PROFILE</th>
+                        <th>DESCRIPTION</th>
+
                       </thead>
                       <tbody class=" text-primary">
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Country</td>
-                            <td>City</td>
-                            <td>Salary</td>
-                        </tr>
+                      {getRecords(appliedJob)}
                       </tbody>
                       </table>
                       </div>

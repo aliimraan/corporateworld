@@ -1,6 +1,29 @@
 import React from 'react'
 
-export default function Viewcontenthr() {
+export default function Viewcontenthr({allJobs}) {
+
+  const getRecords=(el)=>{
+    if(el==undefined){
+      return<h4>loading...</h4>
+    }
+    return el.map((item,index)=>{
+      if(el===undefined){
+        return <h3>loading...</h3>
+      }
+      const {role,profile,description,userId}=item
+      index++
+      return (
+        <tr key={index}>
+          <td>{index}</td>
+          <td>{role}</td>
+          <td>{profile}</td>
+          <td>{userId.fullname}</td>
+          <td>{userId._id}</td>
+        </tr>
+      )
+    })
+  }
+  
     return (
         <div>
         <div class="content">
@@ -16,20 +39,14 @@ export default function Viewcontenthr() {
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Salary</th>
+                        <th>S.No</th>
+                        <th>ROLE</th>
+                        <th>PROFILE</th>
+                        <th>CANDIDATE NAME</th>
+                        <th>CANDIDATE ID</th>
                       </thead>
                       <tbody class=" text-primary">
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Country</td>
-                            <td>City</td>
-                            <td>Salary</td>
-                        </tr>
+                        {getRecords(allJobs)}
                       </tbody>
                       </table>
                       </div>
