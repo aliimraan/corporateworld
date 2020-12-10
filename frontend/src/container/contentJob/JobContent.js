@@ -1,8 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect } from 'react'
 import axiosInstance from '../../helpers'
+import {Redirect} from 'react-router-dom'
 
 export default function JobContent({singleJob}) {
   const [isAlertActive,setAlertActive]=useState('')
+  const [Token,SetToken]=useState('')
+  
+  useEffect(()=>{
+    const token=localStorage.getItem('token')
+    SetToken(token)
+  },[])
 
   const {role,profile,description}=singleJob
 
@@ -23,6 +30,7 @@ export default function JobContent({singleJob}) {
       
   }
     return (
+      Token===''?<Redirect to="/login"/>:
         <div className="content">
         <div className="container-fluid">
           

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import './App.css';
 import Forget from './components/forget_pass/Forget';
 import {Switch,Route} from 'react-router-dom'
@@ -22,15 +22,8 @@ import EditUser from './container/Content/contentadmin/editadmin/Editadmin';
 
 
 function App() {
-  const [isLoggedIn,setLoggedIn]=useState('')
-  useEffect(() => {
-    const token=localStorage.getItem('token')
-    if(token!==''){
-      setLoggedIn(true)
-    }else{
-      setLoggedIn(false)
-    }
-  }, [])
+ 
+
   return (
     <div>
       <Switch>
@@ -39,7 +32,7 @@ function App() {
         <Route path="/login" exact component={Login} />
         <Route path="/login/forget_pass" component={Forget} />
         <Route path="/corporate_login" component={Corporate} />
-        <Route path="/user_dashboard/job_application/:id" exact component={isLoggedIn===false?Login:userDasboard} />
+        <Route path="/user_dashboard/job_application/:id" exact component={userDasboard} />
         <Route path="/user_dashboard/view_application"  exact component={ViewApp} />
         <Route path="/user_dashboard/status"  exact component={Status} />
         <Route path="/hr_dashboard" exact component={hrDashboard} />
