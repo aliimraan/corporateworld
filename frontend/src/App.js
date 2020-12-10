@@ -14,6 +14,11 @@ import hrDashboard from './components/dashboards/hrDashboard/Viewapp';
 import Approve from './components/dashboards/hrDashboard/Approve';
 import Account from './components/dashboards/hrDashboard/Account';
 import Approveuser from './container/Content/contenthr/approve/Approveuser';
+import adminDashboard from './components/dashboards/adminDashboard/Viewadmin';
+import Approvedecline from './components/dashboards/adminDashboard/Approvedecline';
+import Jobs from './components/dashboards/adminDashboard/Jobs';
+import Decline from './components/dashboards/adminDashboard/Decline';
+import Editadmin from './container/Content/contentadmin/editadmin/Editadmin';
 
 
 function App() {
@@ -32,6 +37,15 @@ function App() {
         <Route path="/hr_dashboard/approvedec_app" exact component={Approve} />
         <Route path="/hr_dashboard/account" exact component={Account} />
         <Route path="/contenthr/approve" exact component={Approveuser} />
+        <Route path="/admin_dashboard/view_apps" exact component={adminDashboard} />
+        <Route path="/admin_dashboard/approve_apps" exact component={Approvedecline} />
+        <Route path="/admin_dashboard/decline_apps" exact component={Decline} />
+        <Route path="/admin_dashboard/jobs" exact component={Jobs} />
+        <Route path="/contentadmin/editadmin" exact component={Editadmin} />
+
+        
+
+
 
   
       </Switch>
