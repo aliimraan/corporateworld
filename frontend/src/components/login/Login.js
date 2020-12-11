@@ -17,10 +17,17 @@ export default function Login() {
         const data={email,pass}
         axiosInstance.post('/api/user/login',data).then(data=>{
             if(data.status==200){
+                const {role}=data.data.user
+                if(role==='admin'||role==='admin')
+                {
+                    return setError('Only users are allowed to login')
+                }
+
                 localStorage.setItem('token',data.data.token)
                 localStorage.setItem('email',data.data.user.email)
                 localStorage.setItem('fullname',data.data.user.fullname)
                 localStorage.setItem('id',data.data.user._id)
+                localStorage.setItem('role',data.data.user.role)
                 history.push('/')
             }
             

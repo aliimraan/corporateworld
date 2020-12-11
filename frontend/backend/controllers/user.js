@@ -31,8 +31,8 @@ exports.userLoginController=(req,res)=>{
                 if(err) throw err
 
                 if(result){
-                    const {_id,fullname,email,}=data[0]
-                    const user={_id,fullname,email}
+                    const {_id,fullname,email,role}=data[0]
+                    const user={_id,fullname,email,role}
                     const token=jwt.sign({_id:data[0]._id,role:data[0].role},process.env.JWT_AUTH)
                      res.status(200).json({token,user,'msg':'you are logged in'})
                 }else{

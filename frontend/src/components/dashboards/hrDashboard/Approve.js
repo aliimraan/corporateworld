@@ -10,10 +10,13 @@ import {Redirect} from 'react-router-dom'
 export default function Approve() {
     const [allJobs,setAllJobs]=useState([])
     const [Token,SetToken]=useState('')
+    const [role,SetRole]=useState('')
  
     useEffect(()=>{
         const token=localStorage.getItem('token')
         SetToken(token)
+        const role=localStorage.getItem('role')
+        SetRole(role)
         getAllDetail()
     },[])
 
@@ -29,8 +32,9 @@ export default function Approve() {
     })
     }
     return (
-        Token===null?<Redirect to="/login" />:
+        Token===null && role!=='hr'?<Redirect to="/login" />:
         <div>
+        {console.log(role)}
         <Row>
             <Col md={3}>
             <Sidebar list ={

@@ -16,6 +16,13 @@ export default function Corporate() {
 		
 		axiosInstance.post('/api/user/login',FormDate).then(data=>{
 			if(data.status==200){
+				console.log(data.data.user)
+				const {email,fullname,_id}=data.data.user
+				localStorage.setItem('token',data.data.token)
+				localStorage.setItem('fullname',fullname)
+				localStorage.setItem('email',email)
+				localStorage.setItem('id',_id)
+				localStorage.setItem('role',role)
 				if(role==='admin'){
 					return history.push('/admin_dashboard/view_apps')
 				}else{

@@ -9,10 +9,13 @@ import {Redirect} from 'react-router-dom'
 export default function Decline() {
     const [record,setRecord]=useState([])
     const [Token,SetToken]=useState('')
+    const [role,SetRole]=useState('')
 
     useEffect(() => {
         const token=localStorage.getItem('token')
         SetToken(token)
+        const role=localStorage.getItem('role')
+        SetRole(role)
         axiosInstance.get('/application/job/declined/show').then(data=>{
             setRecord([data.data.data])
         }).catch(err=>{
@@ -20,7 +23,7 @@ export default function Decline() {
         })
      }, [])
     return (
-        Token===null?<Redirect to="/login" />:
+        Token===null && role!=='admin'?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

@@ -8,13 +8,16 @@ import {Redirect} from 'react-router-dom'
 
 export default function Account() {
     const [Token,SetToken]=useState('')
+    const [role,SetRole]=useState('')
     useEffect(()=>{
         const token=localStorage.getItem('token')
         SetToken(token)
+        const role=localStorage.getItem('role')
+        SetRole(role)
         
     },[])
     return (
-        Token===null?<Redirect to="/login" />:
+        Token===null &&  role!=='hr'?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

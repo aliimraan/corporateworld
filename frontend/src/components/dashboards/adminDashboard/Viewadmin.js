@@ -11,9 +11,12 @@ export default function Viewadmin() {
     const [hrList,setHrList]=useState('')
     const [userList,setUserList]=useState('')
     const [Token,SetToken]=useState('')
+    const [role,SetRole]=useState('')
 
     useEffect(()=>{
         const token=localStorage.getItem('token')
+        const role=localStorage.getItem('role')
+        SetRole(role)
         SetToken(token)
         getHrList()
         getUserList()
@@ -45,7 +48,7 @@ export default function Viewadmin() {
     }
   
     return (
-        Token===null?<Redirect to="/login" />:
+        Token===null && role!=='admin'?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>
