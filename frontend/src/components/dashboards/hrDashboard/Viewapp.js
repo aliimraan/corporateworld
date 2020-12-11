@@ -4,12 +4,16 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Viewcontenthr from '../../../container/Content/contenthr/Viewcontenthr'
 import axiosInstance from '../../../helpers'
+import {Redirect} from 'react-router-dom'
 
 
 export default function Viewapp() {
     const [allJobs,setAllJobs]=useState([])
+    const [Token,SetToken]=useState('')
  
     useEffect(()=>{
+        const token=localStorage.getItem('token')
+        SetToken(token)
         getAllDetail()
     },[])
 
@@ -25,6 +29,7 @@ export default function Viewapp() {
     })
     }
     return (
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

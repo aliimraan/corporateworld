@@ -4,16 +4,12 @@ import {Link, Redirect} from 'react-router-dom'
 
 export default function Home() {
     const [allJobs,setAllJobs]=useState([])
-    const [Token,setToken]=useState([])
+   
     useEffect(()=>{
         getAllJobs()
         
     },[])
-    if(localStorage.getItem('token')){
-        const token=localStorage.getItem('token')
-        return setToken(token)
-    }
-
+    
     const getAllJobs=()=>{
         axiosInstance.get('/application/job/show/all').then(data=>{
             console.log(data.data.data)

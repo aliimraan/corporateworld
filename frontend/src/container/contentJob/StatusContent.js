@@ -3,13 +3,12 @@ import axiosInstance from '../../helpers';
 import {Redirect} from 'react-router-dom';
 
 export default function StatusContent() {
+  
   const [pass,setPass]=useState('');
   const [new_pass,setNewPass]=useState('');
   const [c_pass,setCPass]=useState('');
   const [error,setError]=useState('');
   const [success,setSuccess]=useState('');
-
-
 
   const submitHandler=(e)=>{
     e.preventDefault();

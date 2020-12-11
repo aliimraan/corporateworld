@@ -4,12 +4,16 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Approveadmin from '../../../container/Content/contentadmin/Approveadmin'
 import axiosInstance from '../../../helpers'
+import {Redirect} from 'react-router-dom'
 
 
 export default function Approvedecline() {
     const [record,setRecord]=useState([])
+    const [Token,SetToken]=useState('')
 
     useEffect(() => {
+        const token=localStorage.getItem('token')
+        SetToken(token)
        axiosInstance.get('/application/job/approved/show').then(data=>{
            setRecord([data.data.data])
        }).catch(err=>{
@@ -18,6 +22,7 @@ export default function Approvedecline() {
     }, [])
 
     return (
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

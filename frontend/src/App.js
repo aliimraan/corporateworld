@@ -23,8 +23,7 @@ import EditUser from './container/Content/contentadmin/editadmin/Editadmin';
 
 function App() {
  
-
-  return (
+return (
     <div>
       <Switch>
         <Route path='/' exact component={Home}/>

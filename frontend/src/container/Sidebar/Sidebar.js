@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export default function Sidebar({list,active}) {
+export default function Sidebar({list,active,data}) {
 
   
 
@@ -9,7 +9,12 @@ export default function Sidebar({list,active}) {
     return el.map((item,index)=>{
       return (
         <li className={`nav-item ${item.active}` }key={index}>
-            <Link className="nav-link"  to={item.link}>
+            <Link className="nav-link"
+             to={{pathname:item.link,
+                  state: {
+                    userid: item.data
+                  }}}>
+
               <i className="material-icons">{item.icon}</i>
               <p>{item.label}</p>
             </Link>

@@ -4,13 +4,17 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Viewadminn from '../../../container/Content/contentadmin/Viewadminn'
 import axiosInstance from '../../../helpers'
+import {Redirect} from 'react-router-dom'
 
 
 export default function Viewadmin() {
     const [hrList,setHrList]=useState('')
     const [userList,setUserList]=useState('')
+    const [Token,SetToken]=useState('')
 
     useEffect(()=>{
+        const token=localStorage.getItem('token')
+        SetToken(token)
         getHrList()
         getUserList()
     },[])
@@ -41,6 +45,7 @@ export default function Viewadmin() {
     }
   
     return (
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

@@ -4,10 +4,15 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Declineadmin from '../../../container/Content/contentadmin/Declineadmin'
 import axiosInstance from '../../../helpers'
+import {Redirect} from 'react-router-dom'
 
 export default function Decline() {
     const [record,setRecord]=useState([])
+    const [Token,SetToken]=useState('')
+
     useEffect(() => {
+        const token=localStorage.getItem('token')
+        SetToken(token)
         axiosInstance.get('/application/job/declined/show').then(data=>{
             setRecord([data.data.data])
         }).catch(err=>{
@@ -15,6 +20,7 @@ export default function Decline() {
         })
      }, [])
     return (
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

@@ -1,12 +1,21 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import {Row,Col} from 'react-bootstrap'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Jobsadmin from '../../../container/Content/contentadmin/Jobsadmin'
+import {Redirect} from 'react-router-dom'
 
 
 export default function Jobs() {
+    const [Token,SetToken]=useState('')
+
+    useEffect(()=>{
+        const token=localStorage.getItem('token')
+        SetToken(token)
+        
+    },[])
     return (
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

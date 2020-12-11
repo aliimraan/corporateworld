@@ -1,12 +1,20 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Row,Col} from 'react-bootstrap'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Accounthr from '../../../container/Content/contenthr/Accounthr'
+import {Redirect} from 'react-router-dom'
 
 
 export default function Account() {
+    const [Token,SetToken]=useState('')
+    useEffect(()=>{
+        const token=localStorage.getItem('token')
+        SetToken(token)
+        
+    },[])
     return (
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>
