@@ -1,9 +1,8 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import axiosInstance from '../../../helpers'
 
 export default function Viewadminn({hrList,userList}) {
-  
   const history=useHistory()
   const deleteHandler=(id)=>{
     const token=localStorage.getItem('token')
@@ -11,7 +10,9 @@ export default function Viewadminn({hrList,userList}) {
         'headers':{'jwt_react':token}
     }
     axiosInstance.delete('/api/delete/registered/user/'+id,config).then(data=>{
-      console.log(data)
+      if(data.status==200){
+        window.location.reload();
+      }
     }).catch(err=>{
       console.log(err)
     })
@@ -26,7 +27,7 @@ export default function Viewadminn({hrList,userList}) {
       if(el[0].data===undefined){
         return <h3>loading...</h3>
       }
-      console.log(item)
+      
       const {fullname,email,mobile,createdAt,_id}=item
       index++
       return (
@@ -53,7 +54,7 @@ export default function Viewadminn({hrList,userList}) {
       if(el[0].data===undefined){
         return <h3>loading...</h3>
       }
-      console.log(item)
+      
       const {fullname,email,mobile,createdAt,_id}=item
       index++
       return (
@@ -73,7 +74,7 @@ export default function Viewadminn({hrList,userList}) {
 
     return (
       <div className="card" style={{marginTop:150+"px"}}>
-      <div className="accordion" id="accordionExample">
+     <div className="accordion" id="accordionExample">
   <div className="card">
     <div className="card-header" id="headingOne">
       <h2 className="mb-0">

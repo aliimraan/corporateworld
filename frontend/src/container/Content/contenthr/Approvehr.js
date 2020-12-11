@@ -29,9 +29,10 @@ export default function Approvehr({allJobs}) {
           <td>{index}</td>
           <td>{role}</td>
           <td>{profile}</td>
-          <td>{userId.fullname}</td>
-          <td> <button className="btn btn-success" onClick={()=>approveHandler(_id,item)}>Approve</button>
-          <button className="btn btn-danger" >Decline</button></td>
+          <td>{userId===null?'user is deleted by admin':userId.fullname}</td>
+          
+          <td> {userId===null?'':<div><button className="btn btn-success" onClick={()=>approveHandler(_id,item)}>Approve</button>
+          <button className="btn btn-danger" >Decline</button></div>}</td>
           
         </tr>
       )

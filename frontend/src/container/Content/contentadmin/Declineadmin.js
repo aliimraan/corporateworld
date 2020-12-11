@@ -37,8 +37,8 @@ export default function Declineadmin({record}) {
             <div class="col-md-12">
               <div class="card" style={{marginTop:150+"px"}}>
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Approved Users</h4>
-                  <p class="card-category"> All Approved User</p>
+                  <h4 class="card-title ">Declined Users</h4>
+                  <p class="card-category"> All declined User</p>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">

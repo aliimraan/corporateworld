@@ -11,14 +11,17 @@ export default function Viewcontenthr({allJobs}) {
         return <h3>loading...</h3>
       }
       const {role,profile,description,userId}=item
+      // if(userId===null){
+      //   return 'user deleted'
+      // }
       index++
       return (
         <tr key={index}>
           <td>{index}</td>
           <td>{role}</td>
           <td>{profile}</td>
-          <td>{userId.fullname}</td>
-          <td>{userId._id}</td>
+          <td>{userId===null?'user is deleted by admin':userId.fullname}</td>
+          <td>{userId===null?'user deleted':userId._id}</td>
         </tr>
       )
     })

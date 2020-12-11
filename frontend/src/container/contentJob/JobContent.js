@@ -22,6 +22,9 @@ export default function JobContent({singleJob}) {
       axiosInstance.post('/application/user/job/apply',dataToSubmit,config).then(data=>{
         if(data.status==200){
           setAlertActive('active')
+          setTimeout(() => {
+            setAlertActive('')
+          }, 2000);
         }
       }).catch(err=>{
         console.log(err)
@@ -36,11 +39,13 @@ export default function JobContent({singleJob}) {
           
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              <div className="alert alert-success" role="alert" style={isAlertActive==='active'?{display:'block'}:{display:'none'}}>
-              <h4 className="alert-heading">Well done!</h4>
-              <p>Aww yeah, you successfully submitted the job application. All the best .</p>
-              <hr/>
-              <p class="mb-0"><button className="btn btn-success">Browse More jobs</button></p>
+              <div style={{marginTop:100+'px'}}>
+                <div className="alert alert-success mt-4" role="alert" style={isAlertActive==='active'?{display:'block'}:{display:'none'}}>
+                <h4 className="alert-heading fade">Well done!</h4>
+                <p>Aww yeah, you successfully submitted the job application. All the best .</p>
+                <hr/>
+                <p class="mb-0"><button className="btn btn-success">Browse More jobs</button></p>
+                </div>
               </div>
               <div className="card" style={{marginTop:150+"px"}}>
                 <div className="card-header card-header-tabs card-header-primary">
