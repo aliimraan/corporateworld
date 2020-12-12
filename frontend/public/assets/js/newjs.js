@@ -58,6 +58,7 @@ $(document).ready(function() {
 
       var new_color = $(this).data('background-color');
 
+      
       if ($sidebar.length != 0) {
         $sidebar.attr('data-background-color', new_color);
       }

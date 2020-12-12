@@ -9,8 +9,6 @@ export default function Accounthr() {
   const [error,setError]=useState('');
   const [success,setSuccess]=useState('');
 
-
-
   const submitHandler=(e)=>{
     e.preventDefault();
     const userId=localStorage.getItem('id')

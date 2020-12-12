@@ -24,7 +24,7 @@ export default function JobContent({singleJob}) {
           setAlertActive('active')
           setTimeout(() => {
             setAlertActive('')
-          }, 2000);
+          }, 5000);
         }
       }).catch(err=>{
         console.log(err)
@@ -39,7 +39,7 @@ export default function JobContent({singleJob}) {
           
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              <div style={{marginTop:100+'px'}}>
+              <div style={{marginTop:100+'px',}}>
                 <div className="alert alert-success mt-4" role="alert" style={isAlertActive==='active'?{display:'block'}:{display:'none'}}>
                 <h4 className="alert-heading fade">Well done!</h4>
                 <p>Aww yeah, you successfully submitted the job application. All the best .</p>
@@ -52,7 +52,6 @@ export default function JobContent({singleJob}) {
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
                       <span className="nav-tabs-title"><h5>About the Job</h5></span>
-                      
                     </div>
                   </div>
                 </div>

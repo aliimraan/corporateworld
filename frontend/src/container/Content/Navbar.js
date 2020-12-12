@@ -7,7 +7,7 @@ export default function Navbar({label}) {
     window.location.reload()
   }
     return (
-        <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top mb-5">
+        <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
         <div className="container-fluid">
           <div className="navbar-wrapper">
             <a className="navbar-brand" href="javascript:;">{label}</a>
