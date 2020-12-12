@@ -1,9 +1,8 @@
-import React,{useEffect} from 'react'
-import axiosInstance from '../../helpers'
+import React from 'react'
 export default function ViewContent({appliedJob}) {
 
   const getRecords=(el)=>{
-    if(el[0]==undefined){
+    if(el[0]===undefined){
       return<h4>loading...</h4>
     }
     return el[0].map((item,index)=>{

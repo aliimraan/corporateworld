@@ -4,13 +4,13 @@ import Input from '../../container/Input'
 export default function Forget() {
     const [email,setEmail]=useState('');
     const [reset,setReset]=useState('');
+
     const submitHandler=(e)=>{
         e.preventDefault();
+        console.log(email,reset)
     }
     return (
         <div>
-                
-                   
         <div className="form-gap"></div>
             <div className="container">
                 <div className="row">

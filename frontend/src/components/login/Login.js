@@ -1,5 +1,4 @@
 import React ,{useState} from 'react'
-import { Container, Row , Col } from 'react-bootstrap';
 import Input from '../../container/Input'
 import './index.css'
 import {useHistory} from 'react-router-dom'
@@ -16,7 +15,7 @@ export default function Login() {
         e.preventDefault();
         const data={email,pass}
         axiosInstance.post('/api/user/login',data).then(data=>{
-            if(data.status==200){
+            if(data.status===200){
                 const {role}=data.data.user
                 if(role==='admin'||role==='admin')
                 {

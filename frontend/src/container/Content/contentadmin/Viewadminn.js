@@ -1,16 +1,16 @@
-import React,{useEffect, useState} from 'react'
-import {Link,useHistory} from 'react-router-dom'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import axiosInstance from '../../../helpers'
 
 export default function Viewadminn({hrList,userList}) {
-  const history=useHistory()
+  
   const deleteHandler=(id)=>{
     const token=localStorage.getItem('token')
     const config={
         'headers':{'jwt_react':token}
     }
     axiosInstance.delete('/api/delete/registered/user/'+id,config).then(data=>{
-      if(data.status==200){
+      if(data.status===200){
         window.location.reload();
       }
     }).catch(err=>{

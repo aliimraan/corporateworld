@@ -25,7 +25,7 @@ export default function Sidebar({list,active,data}) {
 
   return (
     <div className="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
-     <div className="logo"><a href="" className="simple-text logo-normal">
+     <div className="logo"><a href="/" className="simple-text logo-normal">
           LOGO
         </a></div>
       <div className="sidebar-wrapper">

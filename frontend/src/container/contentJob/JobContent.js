@@ -20,7 +20,7 @@ export default function JobContent({singleJob}) {
         'headers':{'jwt_react':token}
       }
       axiosInstance.post('/application/user/job/apply',dataToSubmit,config).then(data=>{
-        if(data.status==200){
+        if(data.status===200){
           setAlertActive('active')
           setTimeout(() => {
             setAlertActive('')

@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react'
 import JobContent from '../../../container/contentJob/JobContent'
-import Mainpanel from '../../../container/Main/Mainpanel'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import {Row,Col} from 'react-bootstrap'
 import Navbar from '../../../container/Content/Navbar'
@@ -19,7 +18,6 @@ export default function JobApp(props) {
     },[])
 
     const getDetail=()=>{
-    
         const jobId=props.match.params.id
         setPerJobId(jobId)
         axiosInstance.get(`application/job/show/single/${jobId}`).then(data=>{

@@ -21,7 +21,7 @@ export default function Jobsadmin() {
             'headers':{'jwt_react':token}
         }
         axiosInstance.post('/application/admin/job/create',formdata,config).then(data=>{
-            if(data.status==200){
+            if(data.status===200){
                 setShowMessage(true)
                 setTimeout(() => setShowMessage(false),5000);
             }

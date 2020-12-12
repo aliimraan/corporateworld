@@ -9,12 +9,8 @@ export default function Editadmin(props) {
     const [email,setEmail]=useState('hello');
     const [username,setUsername]=useState('');
     const [fullname,setName]=useState('');
-    const [password,setPassword]=useState('');
-    const [dob,setDob]=useState('');
     const [mobile,setMobile]=useState('');
-    const [error,setError]=useState('');
     const [userId,setUserId]=useState('')
-    const [user,setUser]=useState('')
 
     useEffect(()=>{
         const myId=props.match.params.id;
@@ -24,12 +20,11 @@ export default function Editadmin(props) {
             'headers':{'jwt_react':token}
         }
         axiosInstance.get('/api/show/onlyone/registered/user/'+myId,config).then(data=>{
-            const {fullname,password,username,dob,mobile,email}=data.data.data
+            const {fullname,username,mobile,email}=data.data.data
             console.log(data.data.data)
             setName(fullname);
             setUsername(username);
             setEmail(email);
-            setDob(dob);
             setMobile(mobile);
         }).catch(err=>{
             console.log(err)

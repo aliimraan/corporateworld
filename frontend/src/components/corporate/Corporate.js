@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {Row,Col} from 'react-bootstrap'
 import './corporate.css'
 import axiosInstance from '../../helpers'
 
@@ -15,7 +14,7 @@ export default function Corporate() {
 		const FormDate={email,pass,role}
 		
 		axiosInstance.post('/api/user/login',FormDate).then(data=>{
-			if(data.status==200){
+			if(data.status===200){
 				console.log(data.data.user)
 				const {email,fullname,_id}=data.data.user
 				localStorage.setItem('token',data.data.token)
@@ -32,8 +31,6 @@ export default function Corporate() {
 		}).catch(err=>{
 			console.log(err)
 		})
-
-		
 	}
     return (
         <div className="limiter">

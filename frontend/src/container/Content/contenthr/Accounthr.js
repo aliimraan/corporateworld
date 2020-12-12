@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import axiosInstance from '../../../helpers';
 import {Redirect} from 'react-router-dom';
 
@@ -21,9 +21,9 @@ export default function Accounthr() {
         'headers':{jwt_react:token}
     }
     axiosInstance.put(`/api/hr/changePassword/status/${userId}`,data,config).then(data=>{
-      if(data.status==200){
+      if(data.status===200){
         localStorage.clear()
-        {<Redirect to={'/login'}/>}
+        return <Redirect to={'/login'}/>
       }
     }).catch(err=>{
       if(err){

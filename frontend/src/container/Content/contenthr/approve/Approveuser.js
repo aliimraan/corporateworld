@@ -19,7 +19,7 @@ export default function Approveuser(props) {
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        if(interview_date==''){
+        if(interview_date===''){
             return setError('Interview Date required')
         }
         if(conference_link===''){

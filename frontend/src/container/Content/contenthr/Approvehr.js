@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 export default function Approvehr({allJobs}) {
   const history=useHistory()
@@ -15,7 +15,7 @@ export default function Approvehr({allJobs}) {
   }
 
   const getRecords=(el)=>{
-    if(el==undefined){
+    if(el===undefined){
       return<h4>loading...</h4>
     }
     return el.map((item,index)=>{

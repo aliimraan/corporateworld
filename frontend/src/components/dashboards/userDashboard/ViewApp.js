@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from 'react'
 import Sidebar from '../../../container/Sidebar/Sidebar'
-import Mainpanel from '../../../container/Main/Mainpanel'
 import ViewContent from '../../../container/contentJob/ViewContent'
 import {Row,Col} from 'react-bootstrap'
 import Navbar from '../../../container/Content/Navbar'
@@ -10,7 +9,6 @@ import { Redirect } from 'react-router-dom'
 export default function ViewApp(props) {
 
     const [appliedJob,setAppliedJob]=useState([])
-    const [isAlertActive,setAlertActive]=useState('')
     const [Token,SetToken]=useState('')
     const [idToSend,setIdToSend]=useState('')
   

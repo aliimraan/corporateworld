@@ -10,7 +10,7 @@ export default function Navbar({label}) {
         <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
         <div className="container-fluid">
           <div className="navbar-wrapper">
-            <a className="navbar-brand" href="javascript:;">{label}</a>
+            <p className="navbar-brand">{label}</p>
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span className="sr-only">Toggle navigation</span>
@@ -22,7 +22,7 @@ export default function Navbar({label}) {
             
             <ul className="navbar-nav">
               <li className="nav-item dropdown">
-                <a className="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a className="nav-link" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i className="material-icons ">person</i>
                 </a>
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">

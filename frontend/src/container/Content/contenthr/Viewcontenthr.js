@@ -3,14 +3,14 @@ import React from 'react'
 export default function Viewcontenthr({allJobs}) {
 
   const getRecords=(el)=>{
-    if(el==undefined){
+    if(el===undefined){
       return<h4>loading...</h4>
     }
     return el.map((item,index)=>{
       if(el===undefined){
         return <h3>loading...</h3>
       }
-      const {role,profile,description,userId}=item
+      const {role,profile,userId}=item
       // if(userId===null){
       //   return 'user deleted'
       // }
