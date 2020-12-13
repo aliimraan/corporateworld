@@ -39,11 +39,15 @@ export default function Approveadmin({record}) {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card" style={{marginTop:150+"px"}}>
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Approved Users</h4>
-                  <p class="card-category"> All Approved User</p>
-                </div>
+            <div className="card" style={{marginTop:150+"px"}}>
+                <div className="card-header card-header-tabs card-header-primary">
+                  <div className="nav-tabs-navigation">
+                    <div className="nav-tabs-wrapper">
+                      <span className="nav-tabs-title"><h5>Approved User</h5></span>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
@@ -66,7 +70,7 @@ export default function Approveadmin({record}) {
                       </div>
                       </div>
                       </div>
-        </div>
+        
 
         
     )

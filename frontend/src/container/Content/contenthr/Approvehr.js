@@ -44,11 +44,15 @@ export default function Approvehr({allJobs}) {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card" style={{marginTop:150+"px"}}>
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Approve/Decline User Job</h4>
-                  <p class="card-category"> All Jobs Applied By User</p>
-                </div>
+            <div className="card" style={{marginTop:150+"px"}}>
+                <div className="card-header card-header-tabs card-header-primary">
+                  <div className="nav-tabs-navigation">
+                    <div className="nav-tabs-wrapper">
+                      <span className="nav-tabs-title"><h5>Approve/Decline Jobs</h5></span>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
@@ -71,6 +75,6 @@ export default function Approvehr({allJobs}) {
                       </div>
                       </div>
                       </div>
-        </div>
+        
     )
 }

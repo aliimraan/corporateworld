@@ -42,13 +42,20 @@ export default function StatusContent() {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-8">
-              <div class="card" style={{marginTop:150+"px"}}>
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Edit Profile</h4>
-                </div>
+            <div className="card" style={{marginTop:150+"px"}}>
+                <div className="card-header card-header-tabs card-header-primary">
+                  <div className="nav-tabs-navigation">
+                    <div className="nav-tabs-wrapper">
+                      <span className="nav-tabs-title"><h5>Change Password</h5></span>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                 <div className={`${success===''?'alert alert-danger mt-3':'alert alert-success'}` }role="alert" style={error===''?{display:'none'}:{display:'block'}}>
                  {error!==''? error:success}
                 </div>
+
+                
 
                 <div class="card-body">
                   <form onSubmit={submitHandler}>
@@ -89,6 +96,6 @@ export default function StatusContent() {
         </div>  
         </div>
         </div>  
-        </div>
+        
     )
 }

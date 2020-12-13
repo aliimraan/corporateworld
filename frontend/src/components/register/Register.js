@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Input from '../../container/Input';
 import {Container,Row,Col} from 'react-bootstrap'
 import {useHistory} from 'react-router-dom'
-import './register.css'
+import '../login/index.css'
 import axiosInstance from '../../helpers/index'
 export default function Register() {
     const [email,setEmail]=useState('');

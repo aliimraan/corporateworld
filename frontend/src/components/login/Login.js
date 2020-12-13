@@ -41,7 +41,7 @@ export default function Login() {
     return (
         <div>
           <div className="container px-4 py-5 mx-auto">
-    <div className="card card0">
+    
         <div className="d-flex flex-lg-row flex-column-reverse">
             <div className="card card1">
                 <div className="row justify-content-center my-auto">
@@ -79,7 +79,7 @@ export default function Login() {
         </div>
     </div>
 </div>
-        </div>
+      
         
     )
 }
