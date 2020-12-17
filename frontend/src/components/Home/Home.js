@@ -20,17 +20,13 @@ export default function Home() {
        <div className="head">
          <h1 className ="heading">Welcome To Job Portol</h1>
          </div>
-        <span className="reg"><Link className="btn btn-success " to ={`./register`}>Register Now</Link></span>
+        <span className="reg"><Link className="link_btn text-decoration-none" to ={`./register`}>get started</Link></span>
          </Jumbotron>
         <div className="container mt-5 carousel">
            <h1 className ="slider_title">Latest Jobs</h1>
            <Image />
         </div>
-        <Jumbotron style ={{backgroundColor :'#262431'}}>
-       <div className="head">
-         <h1 className ="heading">Welcome To Job Portol</h1>
-         </div>
-         </Jumbotron>
+        
    
          </div>
             

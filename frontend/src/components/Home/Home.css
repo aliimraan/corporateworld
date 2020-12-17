@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
  
 }
 
@@ -26,9 +27,32 @@
 .reg{
   margin-top: 50px;
   display: flex;
-  text-align: center;
+  align-items: center;
   justify-content: center;
+  text-decoration: none;
+
   
+}
+.link_btn{
+padding: 15px 40px;
+color: white;
+font-size: 1.2rem;
+background:linear-gradient(to top,#2f1e84,#413aae);
+border-radius: 5px;
+transition: 0.5s ease;
+border: 2px solid #2f1e84;
+text-transform: capitalize;
+letter-spacing: 2px;
+}
+.link_btn:hover{
+ 
+color: white;
+background:transparent;
+border: 2px solid #2f1e84;
+box-shadow: 0 0 5px #413aae;
+}
+.slider_title{
+  color: #03c8db;
 }
 
 

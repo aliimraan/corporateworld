@@ -44,18 +44,19 @@ export default function Image(props) {
         return el.map((item,index)=>{
             
             return (
-                <div key={index}>
+                <div key={index} id="card_main">
 
             <div className="card-wrapper inner">
                 <div className="card">
                     <div className="card-image" >
-                        <h1>{item.profile}</h1>
-                        <h2>{item.role}</h2>
+                    <div className="role">{item.role}</div>
+                    <div className="profile">{item.profile}</div>
                         <p>{item.description}</p>
-                    </div>
+                   
                    
                     <div className = "details">
-                    <Link className="btn btn-danger" to={`/user_dashboard/job_application/${item._id}`}>view details</Link>
+                    <Link className="apply_btn text-decoration-none" to={`/user_dashboard/job_application/${item._id}`}>Know More</Link>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -69,7 +70,6 @@ export default function Image(props) {
     }
 
     return (
-        
        <Slider {...settings} className="Slider">
            
        {/* <div className="container mt-5 carousel">
@@ -80,6 +80,7 @@ export default function Image(props) {
             
             
        </Slider>
+      
        
     )
 }
