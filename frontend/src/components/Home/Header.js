@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import './Header.css'
 import {
   Collapse,
   Navbar,
@@ -23,20 +25,27 @@ import './Home.css'
 
   return (
     <div>
-      <Navbar style={{backgroundColor : '#262431'}} dark expand="md">
-        <NavbarBrand href="/">Job Portol</NavbarBrand>
+  
+      <Navbar style={{backgroundColor : '#1a0038',padding:'25px'}} dark expand="md">
+      <Container>
+        <NavbarBrand href="/">logo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav  className="ml-auto" navbar >
-            <NavItem   >
-              <NavLink style={{color : 'white'}} href="/components/">Login</NavLink>
+            <NavItem >
+              <NavLink id="nav_navigation" href="/login">Login</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink style={{color : 'white' ,}} href="https://github.com/reactstrap/reactstrap">Register</NavLink>
+              <NavLink id="nav_navigation" href="/register">Register</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink id="nav_navigation" href="#contact">contact us</NavLink>
+            </NavItem>
+          
           </Nav>
           
         </Collapse>
+        </Container>
       </Navbar>
     </div>
   );

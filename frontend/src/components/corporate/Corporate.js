@@ -36,8 +36,6 @@ export default function Corporate() {
     return (
 			<div>
 			<div id="corp">
-
-			
 				<div className="box">
 					<input type="checkbox" className="togg-btn" onChange={(e)=>setRole(e.target.value)}></input>
 					<div className="hrarea">
