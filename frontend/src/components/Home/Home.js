@@ -6,6 +6,7 @@ import Image from './Slider/Slider'
 import './Slider/Css/Slider.css'
 
 import './Home.css'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
     
@@ -19,6 +20,7 @@ export default function Home() {
        <div className="head">
          <h1 className ="heading">Welcome To Job Portol</h1>
          </div>
+        <span className="reg"><Link className="btn btn-success " to ={`./register`}>Register Now</Link></span>
          </Jumbotron>
         <div className="container mt-5 carousel">
            <h1 className ="slider_title">Latest Jobs</h1>

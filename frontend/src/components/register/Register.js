@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import Input from '../../container/Input';
 import {Container,Row,Col} from 'react-bootstrap'
 import {useHistory} from 'react-router-dom'
-import '../login/index.css'
 import axiosInstance from '../../helpers/index'
 export default function Register() {
     const [email,setEmail]=useState('');
@@ -39,7 +38,6 @@ export default function Register() {
                 <div className="row justify-content-center my-5">
                     <div className="col-md-12 col-10 my-8">
                         <div className="row justify-content-center px-3 mb-3"> </div>
-                        <h3 className="mb-5 text-center heading">Register Here !!</h3>
                         <h6 className="msg-info">Fill up all Details Correctly</h6>
                             <div className="alert alert-danger" role="alert" style={error===''?{display:"none"}:{display:"block"}}>
                                 {error}
