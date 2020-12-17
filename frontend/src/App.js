@@ -19,7 +19,7 @@ import Jobs from './components/dashboards/adminDashboard/Jobs';
 import Decline from './components/dashboards/adminDashboard/Decline';
 import Editadmin from './container/Content/contentadmin/editadmin/Editadmin';
 import EditUser from './container/Content/contentadmin/editadmin/Editadmin';
-
+import Reset from './components/forget_pass/Reset';
 
 function App() {
  
@@ -44,6 +44,7 @@ return (
         <Route path="/admin_dashboard/jobs" exact component={Jobs} />
         <Route path="/contentadmin/editadmin/:id" exact component={Editadmin} />
         <Route path="/admin/edituser/:id" exact component={EditUser} />
+        <Route path="/reset/password/:token" exact component={Reset} />
       </Switch>
     </div>
 )

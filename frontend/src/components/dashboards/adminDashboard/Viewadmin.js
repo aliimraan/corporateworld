@@ -4,20 +4,18 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Viewadminn from '../../../container/Content/contentadmin/Viewadminn'
 import axiosInstance from '../../../helpers'
-import {Redirect} from 'react-router-dom'
+import {Redirect,useHistory} from 'react-router-dom'
 
 
 export default function Viewadmin() {
     const [hrList,setHrList]=useState('')
     const [userList,setUserList]=useState('')
     const [Token,SetToken]=useState('')
-    const [role,SetRole]=useState('')
+    const history=useHistory()
 
     useEffect(()=>{
-        const token=localStorage.getItem('token')
-        const role=localStorage.getItem('role')
-        SetRole(role)
-        SetToken(token)
+       
+        SetToken(localStorage.getItem('token'))
         getHrList()
         getUserList()
     },[])
@@ -30,7 +28,9 @@ export default function Viewadmin() {
         axiosInstance.get('/api/hr/registered/show/all',config).then(data=>{
             setHrList([data.data])
         }).catch(err=>{
-            console.log(err)
+            if(err.response.status===400){
+                return history.push('/')
+              }
         })
         
     }
@@ -48,7 +48,7 @@ export default function Viewadmin() {
     }
   
     return (
-        Token===null && role!=='admin'?<Redirect to="/login" />:
+        Token===null ?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

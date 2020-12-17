@@ -4,6 +4,8 @@ const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const env=require('dotenv')
 env.config()
+const crypto=require('crypto')
+const transporter=require('../email')
 
 exports.registerController=(req,res)=>{
     const {fullname,username,email,pass,dob,mobile,role}=req.body
@@ -170,3 +172,58 @@ exports.deleteRegisteredUsers=(req,res)=>{
         return res.status(400).json({err})
     })
 }
+exports.forgetPassword=(req,res)=>{
+    crypto.randomBytes(32,(err,buffer)=>{
+        if(err) {
+            return console.log(err)
+        }
+        const token=buffer.toString('hex')
+
+        const {email}=req.body
+        registerModel.findOne({email:email}).then(data=>{
+            if(!data){   
+                return res.status(400).json({err,msg:'Email doesnt exits'})
+            }
+            registerModel.findOneAndUpdate({email:email},{ resetToken:token,expired:Date.now()+900000}).then(data=>{
+                transporter.sendMail({
+                        to:'aimraan204@gmail.com',
+                        from:'abc@gmail.com',
+                        subject:'Reset Password',
+                        html:`
+                        <p>you requested for password change</p>
+                        <h5>click on this <a href="http://localhost:3000/reset/password/${token}">link</a> to change your password</h5>
+                        `
+                    },(err,info)=>{
+                        if(err) throw err
+                        
+                        return res.status(200).json({msg:'check your email'})
+                        
+                    })
+            }).catch(err=>{
+                console.log(err)
+            })
+                
+                }).catch(err=>{
+                    console.log(err)
+                 })
+    })
+}
+
+    exports.resetPassword=(req,res)=>{
+        const {sendToken,pass}=req.body
+        console.log(sendToken)
+        bcrypt.hash(pass,10).then(hashed=>{
+            const new_pass=hashed;
+            registerModel.findOneAndUpdate({resetToken:sendToken,expired:{$gt:Date.now()}},{password:new_pass}).then(data=>{
+               if(data){
+                return res.status(200).json({msg:'password updated'})
+               }
+               
+            }).catch(err=>{
+                console.log(err)
+            })
+        }).catch(err=>{
+            console.log(err)
+        })
+        
+    }

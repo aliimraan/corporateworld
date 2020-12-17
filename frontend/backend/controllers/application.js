@@ -3,6 +3,8 @@ const approvedJobs=require('../models/approvedJobs')
 const declinedJobModel=require('../models/declinedJobs')
 const appliedJobModel=require('../models/appliedJob')
 
+const transporter = require('../email');
+
 exports.jobCreate=(req,res)=>{
     const newJobModel=new jobModel(req.body)
     newJobModel.save().then(data=>{
@@ -29,7 +31,13 @@ exports.approvedJobs=(req,res)=>{
         if(data){
             const newApprovedJobs=new approvedJobs(req.body)
             newApprovedJobs.save().then(data=>{
-                //need to send email to the user
+                transporter.sendMail({
+                    // from:,
+                    // to:,
+                    // subject: ,
+                    // text: ,
+                    
+                  })
                 res.status(200).json({data,msg:'candidate approved'})
                 
             }).catch(err=>{

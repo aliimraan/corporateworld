@@ -1,23 +1,24 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import './forget.css'
 import Input from '../../container/Input'
 import axiosInstance from '../../helpers';
+import {useParams,useHistory} from 'react-router-dom';
 import {ToastContainer,toast} from 'react-toastify'
-
 export default function Forget() {
-    const [email,setEmail]=useState('');
-    const [reset,setReset]=useState('');
+    const [pass,setPass]=useState('');
+    const history=useHistory()
+    const token=useParams()
+        const sendToken=token.token
 
-    const submitHandler=(e)=>{
+   const submitHandler=(e)=>{
         e.preventDefault();
-        const token=localStorage.getItem('token')
-        const config={
-            'headers':{jwt_react:token}
-        }
-        const formData={email}
-        axiosInstance.post('/api/reset/password',formData,config).then(data=>{
+        const formData={sendToken,pass}
+        axiosInstance.post('/api/new-password/forget',formData).then(data=>{
             if(data.status===200){
                 toast.success(data.data.msg)
+                setTimeout(() => {
+                    history.push('/login')
+                },5000);
             }
         }).catch(err=>{
             if(err){
@@ -25,6 +26,8 @@ export default function Forget() {
                 :toast.error(err.response.data.msg)
             }
         })
+ 
+        
     }
     return (
         <div>
@@ -41,9 +44,9 @@ export default function Forget() {
                         <ToastContainer position="top-center"/>
                         <div className="panel-body">
                           <form onSubmit={submitHandler} id="register-form" role="form" autocomplete="off" className="form" method="post">
-                            <Input type="text" placeholder="Enter Email" onChange={(e)=>setEmail(e.target.value)} />
+                            <Input type="text" placeholder="Enter New Password" onChange={(e)=>setPass(e.target.value)} />
                              <div className="form-group">
-                             <button name="recover-submit" className="btn btn-lg btn-primary btn-block" type="submit">Reset</button>
+                                <button name="recover-submit" className="btn btn-lg btn-primary btn-block" type="submit">change password</button>
                             </div>
                             
                             </form>

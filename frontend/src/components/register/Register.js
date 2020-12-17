@@ -4,6 +4,9 @@ import {Container,Row,Col} from 'react-bootstrap'
 import {Link, useHistory} from 'react-router-dom'
 import axiosInstance from '../../helpers/index'
 import '../login/login.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Register() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');

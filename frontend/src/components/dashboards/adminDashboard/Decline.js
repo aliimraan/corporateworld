@@ -4,26 +4,26 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Declineadmin from '../../../container/Content/contentadmin/Declineadmin'
 import axiosInstance from '../../../helpers'
-import {Redirect} from 'react-router-dom'
+import {Redirect,useHistory} from 'react-router-dom'
 
 export default function Decline() {
     const [record,setRecord]=useState([])
     const [Token,SetToken]=useState('')
-    const [role,SetRole]=useState('')
+    const history=useHistory()
 
     useEffect(() => {
-        const token=localStorage.getItem('token')
-        SetToken(token)
-        const role=localStorage.getItem('role')
-        SetRole(role)
+        SetToken(localStorage.getItem('token'))
+        
         axiosInstance.get('/application/job/declined/show').then(data=>{
             setRecord([data.data.data])
         }).catch(err=>{
-            console.log(err)
+            if(err.response.status===400){
+                return history.push('/')
+              }
         })
      }, [])
     return (
-        Token===null && role!=='admin'?<Redirect to="/login" />:
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

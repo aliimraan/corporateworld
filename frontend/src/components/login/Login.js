@@ -3,12 +3,13 @@ import Input from '../../container/Input'
 import './login.css'
 import {Link, useHistory} from 'react-router-dom'
 import axiosInstance from '../../helpers'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');
-    const [error,setError]=useState('');
     const history=useHistory()
 
     const submitHandler=(e)=>{
@@ -19,7 +20,7 @@ export default function Login() {
                 const {role}=data.data.user
                 if(role==='admin'||role==='admin')
                 {
-                    return setError('Only users are allowed to login')
+                    return toast.error('Only users are allowed to login')
                 }
 
                 localStorage.setItem('token',data.data.token)
@@ -32,8 +33,8 @@ export default function Login() {
             
         }).catch(err=>{ 
             if(err){
-                err.response.data.error?setError(err.response.data.error)
-                :setError(err.response.data.msg)
+                err.response.data.error?toast.error(err.response.data.error)
+                :toast.error(err.response.data.msg)
             }
            
         })
@@ -52,6 +53,7 @@ export default function Login() {
                             </div>
                             <div className="col-md-7 loginarea">
                                     <h2>Login Here</h2>
+                                    <ToastContainer position="top-center" />
                                     <div className="login-form">
                                         <form onSubmit={submitHandler}>
                                     <Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
