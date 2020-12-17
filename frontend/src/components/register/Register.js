@@ -3,6 +3,9 @@ import Input from '../../container/Input';
 import {Container,Row,Col} from 'react-bootstrap'
 import {useHistory} from 'react-router-dom'
 import axiosInstance from '../../helpers/index'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Register() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');
@@ -11,7 +14,6 @@ export default function Register() {
     const [dob,setDob]=useState('');
     const [mobile,setMobile]=useState('');
     const [c_pass,setConfirmpassword]=useState('');
-    const [error,setError]=useState('')
     const history=useHistory()
 
     const submitHandler=(e)=>{
@@ -19,14 +21,14 @@ export default function Register() {
         
        
         if(pass!==c_pass){
-            return setError('Password not Matched')
+            return toast.error('Password not Matched')
         }
         
         const data={fullname,username,email,pass,dob,mobile}
         axiosInstance.post('/api/register/create',data).then(data=>{
             console.log(data)
         }).catch(err=>{ 
-            setError(err.response.data.error)
+            return toast.error(err.response.data.error);
         })
         
     }
@@ -39,9 +41,7 @@ export default function Register() {
                     <div className="col-md-12 col-10 my-8">
                         <div className="row justify-content-center px-3 mb-3"> </div>
                         <h6 className="msg-info">Fill up all Details Correctly</h6>
-                            <div className="alert alert-danger" role="alert" style={error===''?{display:"none"}:{display:"block"}}>
-                                {error}
-                            </div>
+                        <ToastContainer position="top-center" />
                     <form onSubmit={submitHandler}>
                     <Row>
                         <Col md={12}> <Input type="text" placeholder="Enter Name" label="Full Name" onChange={(e)=>setName(e.target.value)} /></Col>

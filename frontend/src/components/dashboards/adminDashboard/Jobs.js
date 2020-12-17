@@ -3,23 +3,23 @@ import {Row,Col} from 'react-bootstrap'
 import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Jobsadmin from '../../../container/Content/contentadmin/Jobsadmin'
-import {Redirect} from 'react-router-dom'
+import {Redirect,useHistory} from 'react-router-dom'
 
 
 export default function Jobs() {
     const [Token,SetToken]=useState('')
-    const [role,SetRole]=useState('')
+    const history=useHistory()
     
 
     useEffect(()=>{
-        const token=localStorage.getItem('token')
-        SetToken(token)
-        const role=localStorage.getItem('role')
-        SetRole(role)
+        SetToken(localStorage.getItem('token'))
+        if(localStorage.getItem('role')!=='admin'){
+            return history.push('/')
+        }
         
     },[])
     return (
-        Token===null && role!=='admin'?<Redirect to="/login" />:
+        Token===null?<Redirect to="/login" />:
         <div>
         <Row>
             <Col md={3}>

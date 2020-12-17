@@ -7,7 +7,9 @@ const registerSchema=new mongoose.Schema({
     password:{type:String,required:true,min:5},
     dob:{type:Date,required:true},
     mobile:{type:Number,required:true},
-    role:{type:String,default:'user'}
+    role:{type:String,default:'user'},
+    resetToken:{type:String,default:'undefined'},
+    expired:{type:Date}
 },{timestamps:true})
 
 const registerModel=mongoose.model('users',registerSchema)

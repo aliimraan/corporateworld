@@ -12,7 +12,8 @@ const {authenticate, hrMiddleware, adminMiddleware}=require('../common-middlewar
 const {userMiddleware}=require('../common-middleware')
 const {userChangePassword}=require('../controllers/user')
 const {signUpRequestValidator,signUpRequestValidatorResult,loginRequestValidator,loginRequestValidatorResult}=require('../validator')
-
+const {forgetPassword}=require('../controllers/user')
+const {resetPassword}=require('../controllers/user')
 
 router.post('/register/create',signUpRequestValidator,signUpRequestValidatorResult,registerController)
 router.post('/user/login',loginRequestValidator,loginRequestValidatorResult,userLoginController)
@@ -24,5 +25,7 @@ router.get('/user/registered/show/all',authenticate,adminMiddleware,showAllRegis
 router.get('/show/onlyone/registered/user/:id',authenticate,adminMiddleware,showOneRegisteredUsers)
 router.put('/update/registered/user/:id',authenticate,updateRegisteredUsers)
 router.delete('/delete/registered/user/:id',authenticate,deleteRegisteredUsers)
+router.post('/reset/password',forgetPassword)
+router.post('/new-password/forget',resetPassword)
 
 module.exports=router;
