@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
 import Input from '../../container/Input';
 import {Container,Row,Col} from 'react-bootstrap'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import axiosInstance from '../../helpers/index'
+import '../login/login.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,6 +15,7 @@ export default function Register() {
     const [dob,setDob]=useState('');
     const [mobile,setMobile]=useState('');
     const [c_pass,setConfirmpassword]=useState('');
+    const [error,setError]=useState('')
     const history=useHistory()
 
     const submitHandler=(e)=>{
@@ -21,29 +23,39 @@ export default function Register() {
         
        
         if(pass!==c_pass){
-            return toast.error('Password not Matched')
+            return setError('Password not Matched')
         }
         
         const data={fullname,username,email,pass,dob,mobile}
         axiosInstance.post('/api/register/create',data).then(data=>{
             console.log(data)
         }).catch(err=>{ 
-            return toast.error(err.response.data.error);
+            setError(err.response.data.error)
         })
         
     }
     return (
     <div>
-        <Container>
-            <Row>
-              <div className="card card1">
-                <div className="row justify-content-center my-5">
-                    <div className="col-md-12 col-10 my-8">
-                        <div className="row justify-content-center px-3 mb-3"> </div>
-                        <h6 className="msg-info">Fill up all Details Correctly</h6>
-                        <ToastContainer position="top-center" />
-                    <form onSubmit={submitHandler}>
-                    <Row>
+
+        <div id="login">
+          
+          <div className ="row">
+              <div className ="col-md-10 offset-md-1">
+                  <div className="row">
+                      <div className="col-md-5 adminarea">
+                          <h1>Already Have Account</h1>
+                          <h3>Login Here</h3>
+                          
+                          <Link className="btn btn-warning" to={`/login`}>Login Now</Link>
+                      </div>
+                      <div className="col-md-7 registerarea">
+                              <h2>Register</h2>
+                              <div className="login-form">
+                              <div className="alert alert-danger" role="alert" style={error===''?{display:"none"}:{display:"block"}}>
+                                {error}
+                            </div>
+                                  <form onSubmit={submitHandler}>
+                                  <Row>
                         <Col md={12}> <Input type="text" placeholder="Enter Name" label="Full Name" onChange={(e)=>setName(e.target.value)} /></Col>
                         <Col md={6}> <Input type="text" placeholder="Enter Username" label="Username" onChange={(e)=>setUsername(e.target.value)} /></Col>
                         <Col md={6}> <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPassword(e.target.value)} /></Col>
@@ -51,31 +63,21 @@ export default function Register() {
                         <Col md={6}> <Input type="date" placeholder="Date Of Birth" label="Date Of Birth" onChange={(e)=>setDob(e.target.value)} /></Col>
                         <Col md={6}> <Input type="number" placeholder="Enter Mobile Number" label="Mobile" onChange={(e)=>setMobile(e.target.value)} /></Col>
                         <Col md={6}> <Input type="email" placeholder="Enter Email" label="E-mail" onChange={(e)=>setEmail(e.target.value)} /></Col>
+                        <Col md={6}>   <button type="submit" className="btn btn-danger">Sign Up</button></Col>
+                        <Col md={6}>  <button type="reset" className="btn btn-danger">Reset</button></Col> 
 
                     </Row>
-
-                    
-                    
-                    <Row>    
-                            <Col md={6}>   <button className="btn-block btn-color">Sign Up</button></Col>
-                            <Col md={6}>  <button className="btn-block btn-color">Reset</button></Col> 
-                     </Row>  
-
-                              
-
-                              <div className="bottom text-center mb-5">
-                    <p className="sm-text mx-auto mb-3">Already have an account?<button className="btn btn-white ml-2" onClick={()=>history.push('/login')}>Login Here</button></p>
-                </div>
-                    
                     </form>
-                    </div>
-                    </div>
-                    </div>
-      
-            
-  </Row>
- 
-</Container>
+                             
+                      </div>
+                      
+                  </div>
+                  </div> 
+          </div>
+      </div>
+      </div>
+
+       
            
         </div>
     )
