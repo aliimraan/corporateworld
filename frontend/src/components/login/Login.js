@@ -53,10 +53,14 @@ export default function Login() {
                             <div className="col-md-7 loginarea">
                                     <h2>Login Here</h2>
                                     <div className="login-form">
+                                        <form onSubmit={submitHandler}>
                                     <Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                                     <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPassword(e.target.value)} />
-                                   <Link className="btn btn-primary" to={`/user_dashboard/job_application/:id`}>Login</Link>
+                                    </form>
+                                    <button type="submit" className="btn btn-primary">Login</button>
+                                   
                             </div>
+                            
                         </div>
                         </div> 
                 </div>
