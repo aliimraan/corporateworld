@@ -56,9 +56,9 @@ export default function Login() {
                                         <form onSubmit={submitHandler}>
                                     <Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                                     <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPassword(e.target.value)} />
-                                    </form>
+                                    
                                     <button type="submit" className="btn btn-primary">Login</button>
-                                   
+                                    </form>
                             </div>
                             
                         </div>
