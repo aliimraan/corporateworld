@@ -11,7 +11,7 @@ export default function Contact() {
                 
                         <div className="col-md-6">
                         <div className="cont_area">
-                            <div className="heading">
+                            <div className="title">
                                 <img src="/assets/images/email.svg"/>
                                 <h3>send me a message</h3>
                             </div>
@@ -39,7 +39,7 @@ export default function Contact() {
                         <div className="another_area">
                         
                             
-                        <div className="heading">
+                        <div className="title">
                             <img src="/assets/images/email.svg"/>
                             <h3>contact me</h3>
                         </div>

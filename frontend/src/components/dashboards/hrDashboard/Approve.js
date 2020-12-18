@@ -5,6 +5,7 @@ import Navbar from '../../../container/Content/Navbar'
 import Approvehr from '../../../container/Content/contenthr/Approvehr'
 import axiosInstance from '../../../helpers'
 import {Redirect} from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 
 export default function Approve() {

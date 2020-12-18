@@ -4,6 +4,7 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Jobsadmin from '../../../container/Content/contentadmin/Jobsadmin'
 import {Redirect,useHistory} from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 
 export default function Jobs() {

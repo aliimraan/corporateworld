@@ -5,6 +5,7 @@ import {Row,Col} from 'react-bootstrap'
 import Navbar from '../../../container/Content/Navbar'
 import axiosInstance from '../../../helpers'
 import { Redirect } from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 export default function ViewApp(props) {
 

@@ -5,6 +5,7 @@ import Navbar from '../../../container/Content/Navbar'
 import Approveadmin from '../../../container/Content/contentadmin/Approveadmin'
 import axiosInstance from '../../../helpers'
 import {Redirect,useHistory} from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 
 export default function Approvedecline() {

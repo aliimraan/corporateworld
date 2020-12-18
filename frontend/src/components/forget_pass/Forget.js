@@ -27,7 +27,7 @@ export default function Forget() {
         })
     }
     return (
-        <div>
+        <div id="forget">
         <div className="form-gap"></div>
             <div className="container">
                 <div className="row">
@@ -43,7 +43,7 @@ export default function Forget() {
                           <form onSubmit={submitHandler} id="register-form" role="form" autocomplete="off" className="form" method="post">
                             <Input type="text" placeholder="Enter Email" onChange={(e)=>setEmail(e.target.value)} />
                              <div className="form-group">
-                             <button name="recover-submit" className="btn btn-lg btn-primary btn-block" type="submit">Reset</button>
+                             <button name="recover-submit" className="btn btn-lg btn-primary btn-block" type="submit" onChange={(e)=>setReset(e.target.value)} >Reset</button>
                             </div>
                             
                             </form>

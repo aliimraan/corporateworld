@@ -4,6 +4,7 @@ import StatusContent from '../../../container/contentJob/StatusContent'
 import {Row,Col} from 'react-bootstrap'
 import Navbar from '../../../container/Content/Navbar'
 import { Redirect } from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 
 export default function Status(props) {

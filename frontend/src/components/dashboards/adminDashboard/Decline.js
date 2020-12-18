@@ -5,6 +5,7 @@ import Navbar from '../../../container/Content/Navbar'
 import Declineadmin from '../../../container/Content/contentadmin/Declineadmin'
 import axiosInstance from '../../../helpers'
 import {Redirect,useHistory} from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 export default function Decline() {
     const [record,setRecord]=useState([])

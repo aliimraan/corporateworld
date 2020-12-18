@@ -4,7 +4,7 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Accounthr from '../../../container/Content/contenthr/Accounthr'
 import {Redirect} from 'react-router-dom'
-
+import '../css/material-dashboard.css'
 
 export default function Account() {
     const [Token,SetToken]=useState('')

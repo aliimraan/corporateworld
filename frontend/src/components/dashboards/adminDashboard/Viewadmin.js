@@ -5,6 +5,7 @@ import Navbar from '../../../container/Content/Navbar'
 import Viewadminn from '../../../container/Content/contentadmin/Viewadminn'
 import axiosInstance from '../../../helpers'
 import {Redirect,useHistory} from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 
 export default function Viewadmin() {

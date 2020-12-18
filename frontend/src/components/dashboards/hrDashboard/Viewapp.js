@@ -5,6 +5,7 @@ import Navbar from '../../../container/Content/Navbar'
 import Viewcontenthr from '../../../container/Content/contenthr/Viewcontenthr'
 import axiosInstance from '../../../helpers'
 import {Redirect} from 'react-router-dom'
+import '../css/material-dashboard.css'
 
 
 export default function Viewapp() {

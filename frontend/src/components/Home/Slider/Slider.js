@@ -38,7 +38,7 @@ export default function Image(props) {
               initialSlide: 2,
               autoplay:true,
               infinite: true,
-
+              dots: true
             }
           },
           {
@@ -48,7 +48,7 @@ export default function Image(props) {
               slidesToScroll: 1,
               autoplay:true,
               infinite: true,
-
+              dots: true
             }
           }
         ]

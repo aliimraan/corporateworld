@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import './corporate.css'
 import axiosInstance from '../../helpers'
 import Input from '../../container/Input'
@@ -43,7 +43,8 @@ export default function Corporate() {
 				<h2>HR LOGIN</h2>
 				<Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                 <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPass(e.target.value)} />
-                <button type="submit" className="btn btn-primary">Login</button>
+				<Link className="forget" to={`/login/forget_pass`}>Forget Password</Link>
+				<button type="submit" className="btn btn-primary">Login</button>
 
 				</form>
 				</div>
@@ -52,7 +53,8 @@ export default function Corporate() {
 				<h2>ADMIN LOGIN</h2>
 				<Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                 <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPass(e.target.value)} />
-                <button type="submit" className="btn btn-primary">Login</button>
+				<Link className="forget" to={`/login/forget_pass`}>Forget Password</Link>
+				<button type="submit" className="btn btn-primary">Login</button>
 
 				</form>
 				</div>

@@ -69,13 +69,35 @@
 .loginarea{
     font-family: 'Poiret One', cursive;
     margin-top: 100px !important;
-    padding-bottom: 20px !important;
+    padding: 20px !important;
     border: none;
     background: #f8f8f8;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
     padding: 50px;
 }
+
+@media (max-width: 770px) {
+    .loginarea{
+    margin-left: 50px;
+    width: 100%;
+    padding: 20px !important;
+    border: none;
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 50px;
+    }
+}
+    @media (max-width: 770px){
+    .adminarea{
+        margin-top: -30px !important;
+    }
+
+    #login{
+        height : 120vh;
+    }
+  }
+  
 
 .loginarea h2 , .registerarea h2{
     text-align: center;
@@ -95,6 +117,12 @@
     margin-top: 20px;
     padding: 10px;
     border-radius: 1.5rem;
+}
+
+.forget{
+    color: orangered !important;
+    font-weight: 900;
+    font-family: 'Pacifico', cursive !important;
 }
 
 .loginarea .btn-primary:hover{

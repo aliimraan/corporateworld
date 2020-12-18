@@ -50,7 +50,7 @@ export default function StatusContent() {
                     </div>
                   </div>
                   </div>
-                  </div>
+                  
                 <div className={`${success===''?'alert alert-danger mt-3':'alert alert-success'}` }role="alert" style={error===''?{display:'none'}:{display:'block'}}>
                  {error!==''? error:success}
                 </div>
@@ -90,7 +90,7 @@ export default function StatusContent() {
                 </div>
               </div>
             </div>
-            
+            </div>
         </div>
         </div>
         </div>  
