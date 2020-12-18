@@ -5,18 +5,55 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Css/Slider.css'
 import axiosInstance from '../../../helpers'
 import {Link} from 'react-router-dom'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner';
 
 
 export default function Image(props) {
     
     const settings = {
-        dot:true,
-        infinite:true,
-        speed:500,
-        slidesToShow:3,
-        slidesToScroll:1,
-        cssEase:"linear", 
-    }
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay:true,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              autoplay:true,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 2,
+              autoplay:true,
+              infinite: true,
+
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              autoplay:true,
+              infinite: true,
+
+            }
+          }
+        ]
+      };
+      
 
     const [allJobs,setAllJobs]=useState([])
    
@@ -36,7 +73,14 @@ export default function Image(props) {
 
     const renderAllJobs=(el)=>{
      if(el===undefined){
-         return <h1>Loading...</h1>
+         return <Loader
+         type="ThreeDots"
+         color="#00BFFF"
+         height={100}
+         width={100}
+         timeout={6000}
+ 
+      />
      }
      if(el.length<1){
          return <h1>no records</h1>
