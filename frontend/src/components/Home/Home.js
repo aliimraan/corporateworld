@@ -19,16 +19,11 @@ export default function Home() {
             <div id="main">
           
          
-          <Jumbotron style ={{backgroundColor :'#290058',marginBottom:'0px',borderRadius:'0px'}}>
-       <div className="head">
-         <h1 className ="heading">Welcome To Job Portol</h1>
-         </div>
-        
-         </Jumbotron>
+         
          <section>
             <div className="showcase_area">
               <div className="text_side">
-               <h6> start your<br/> carrier now</h6>
+               <h6> start your<br/> carrier</h6> <h6><span className="heading"> now</span></h6> 
                 <p>Lorem Ipsum is simply dummy text of the printing and </p>
                 <span className="reg"><Link className="link_btn text-decoration-none" to ={`./register`}>get started</Link></span>
               </div>

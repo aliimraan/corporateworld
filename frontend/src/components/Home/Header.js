@@ -39,7 +39,7 @@ import './Home.css'
               <NavLink id="nav_navigation" href="/register">Register</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink id="nav_navigation" href="#contact">contact us</NavLink>
+              <NavLink id="nav_navigation" href="#contact">Contact US</NavLink>
             </NavItem>
           
           </Nav>

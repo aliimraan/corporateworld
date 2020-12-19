@@ -23,7 +23,6 @@
   width: 0ch;
   white-space: nowrap;
   animation: slide 6s linear infinite ;
-  border-right: 0.2rem solid #2ed573;
   overflow: hidden;
  
 }
@@ -138,6 +137,9 @@ section .showcase_area .text_side .reg .link_btn{
     font-size: 2rem;
     
   }
+  .contact{
+    height: 100%;
+  }
   
 }
 
@@ -154,4 +156,6 @@ section .showcase_area .text_side .reg .link_btn{
   
   
 }
+
+
 

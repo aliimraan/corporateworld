@@ -64,9 +64,13 @@
     background: #ff0066;
     
 }
-@media (max-width: 770px) {
+@media (max-width: 600px) {
     .card{
        min-width: 50%;
+     }
+     .Slider {
+         width: 90%;
+         margin-left: 20px;
      }
   }
   
