@@ -158,7 +158,7 @@ exports.updateRegisteredUsers=(req,res)=>{
         mobile:mobile
 
     }).then(data=>{
-        return res.status(200).json({data,msg:"updated list"})
+        return res.status(200).json({data,msg:"Profile Updated"})
     }).catch(err=>{
         return res.status(400).json({err})
     })

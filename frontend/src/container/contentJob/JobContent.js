@@ -1,9 +1,13 @@
 import React,{useState,useEffect } from 'react'
 import axiosInstance from '../../helpers'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useHistory} from 'react-router-dom'
 
 
 export default function JobContent({singleJob}) {
   const [isAlertActive,setAlertActive]=useState('')
+  const history=useHistory()
 
   
   useEffect(()=>{
@@ -21,13 +25,21 @@ export default function JobContent({singleJob}) {
       }
       axiosInstance.post('/application/user/job/apply',dataToSubmit,config).then(data=>{
         if(data.status===200){
-          setAlertActive('active')
+          toast.success(data.data.msg)
           setTimeout(() => {
-            setAlertActive('')
+            return history.push('/')
           }, 5000);
         }
+       
       }).catch(err=>{
-        console.log(err)
+        if(!err){
+          return 0;
+        }else{
+          if(err.response.data.err.code===11000){
+              return toast.error('Already Applied')
+         
+          }
+        }
       })
       
   }
@@ -39,14 +51,7 @@ export default function JobContent({singleJob}) {
           
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              <div style={{marginTop:100+'px',}}>
-                <div className="alert alert-success mt-4" role="alert" style={isAlertActive==='active'?{display:'block'}:{display:'none'}}>
-                <h4 className="alert-heading fade">Well done!</h4>
-                <p>Aww yeah, you successfully submitted the job application. All the best .</p>
-                <hr/>
-                <p class="mb-0"><button className="btn btn-success">Browse More jobs</button></p>
-                </div>
-              </div>
+              <ToastContainer/>
               <div className="card" style={{marginTop:150+"px"}}>
                 <div className="card-header card-header-tabs card-header-primary">
                   <div className="nav-tabs-navigation">

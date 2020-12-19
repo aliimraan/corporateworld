@@ -87,3 +87,21 @@ exports.jobRequestValidatorResult=(req,res,next)=>{
     }
     next()
 }
+
+exports.approveRequestValidator=[
+    check('interview_date')
+    .notEmpty()
+    .withMessage('Interview Date Is Required'),
+
+    check('conference_link')
+    .notEmpty()
+    .withMessage('Conference Link Is Required'),
+];
+
+exports.approveRequestValidatorResult=(req,res,next)=>{
+    const error=validationResult(req)
+    if(error.array().length>0){
+        return res.status(400).json({error:error.array()[0].msg})
+    }
+    next()
+}

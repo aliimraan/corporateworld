@@ -24,25 +24,23 @@ exports.jobShow=(req,res)=>{
 }
 
 exports.approvedJobs=(req,res)=>{
-    const {userId}=req.body;
-    console.log(userId)
-    appliedJobModel.findOneAndRemove({userId:userId}).then(data=>{
-        console.log(data)
+    const {userId,jobId,conference_link,interview_date}=req.body;
+    const newApprovedJobs=new approvedJobs(req.body)
+    newApprovedJobs.save().then(data=>{
         if(data){
-            const newApprovedJobs=new approvedJobs(req.body)
-            newApprovedJobs.save().then(data=>{
+            appliedJobModel.findOneAndRemove({userId:userId}).then(data=>{
                 transporter.sendMail({
-                    // from:,
-                    // to:,
-                    // subject: ,
-                    // text: ,
-                    
-                  })
-                res.status(200).json({data,msg:'candidate approved'})
-                
-            }).catch(err=>{
-                res.status(400).json({err})
-            })
+                    to:'zainsaifi413@gmail.com',
+                     subject: 'Regarding job',
+                     html:`congratulations.your application is approved now.prepare yourself and get ready for the interview.join this <a href="${conference_link}"><h3>conference link</h3></a> on ${interview_date}`
+                   },(err,result)=>{
+                       if(err) throw err
+                       if(result){
+                         return res.status(200).json({msg:'candidate approved'})
+                       }
+                    })}).catch(err=>{
+                        res.status(400).json({err})
+                    })
         }
     }).catch(err=>{
         console.log(err)
