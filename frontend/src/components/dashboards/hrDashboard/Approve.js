@@ -4,20 +4,20 @@ import Sidebar from '../../../container/Sidebar/Sidebar'
 import Navbar from '../../../container/Content/Navbar'
 import Approvehr from '../../../container/Content/contenthr/Approvehr'
 import axiosInstance from '../../../helpers'
-import {Redirect} from 'react-router-dom'
+import {Redirect,useHistory} from 'react-router-dom'
 import '../css/material-dashboard.css'
 
 
 export default function Approve() {
     const [allJobs,setAllJobs]=useState([])
     const [Token,SetToken]=useState('')
-    const [role,SetRole]=useState('')
+    const history=useHistory()
  
     useEffect(()=>{
-        const token=localStorage.getItem('token')
-        SetToken(token)
-        const role=localStorage.getItem('role')
-        SetRole(role)
+        SetToken(localStorage.getItem('token'))
+        if(localStorage.getItem('role')!=='hr'){
+            return history.push('/login')
+        }
         getAllDetail()
     },[])
 
@@ -33,9 +33,8 @@ export default function Approve() {
     })
     }
     return (
-        Token===null && role!=='hr'?<Redirect to="/login" />:
+        Token===null?<Redirect to="/login" />:
         <div>
-        {console.log(role)}
         <Row>
             <Col md={3}>
             <Sidebar list ={

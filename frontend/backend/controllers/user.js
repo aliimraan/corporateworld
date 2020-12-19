@@ -50,7 +50,7 @@ exports.userLoginController=(req,res)=>{
 exports.userAppliedJob=(req,res)=>{
  const newAppliedJobModel=new appliedJobModel(req.body)
     newAppliedJobModel.save().then(data=>{
-    return res.status(200).json({data,msg:'job applied successfull'})
+    return res.status(200).json({data,msg:'Applied Successfully'})
     }).catch(err=>{
     return res.status(400).json({err})
 })

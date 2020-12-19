@@ -39,7 +39,6 @@ export default function ViewApp(props) {
     return (
        Token===null?<Redirect to="/login" />:
         <div>
-        {console.log(idToSend)}
         <Row>
             <Col md={3}>
             <Sidebar list={
