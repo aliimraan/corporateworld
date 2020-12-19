@@ -1,5 +1,10 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
+import axiosInstance from '../../../helpers';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 export default function Approvehr({allJobs}) {
   const history=useHistory()
@@ -12,6 +17,34 @@ export default function Approvehr({allJobs}) {
        }
      });
  
+  }
+  const declineHandler=(items)=>{
+    console.log(items)
+    const token=localStorage.getItem('token')
+    const config={
+      'headers':{jwt_react:token}
+    }
+    axiosInstance.post('/application/declined/hr/job',items,config).then(data=>{
+      if(data.status===200){
+        toast.success(data.data.msg)
+        setTimeout(() => {
+          history.go(0)
+        }, 5000);
+      }
+    }).catch(err=>{
+      if(!err){
+       return 0;
+    }else{
+      if(err.response==undefined){
+        return 0;
+      }else{
+        err.response.data.error?toast.error(err.response.data.error)
+        :toast.error(err.response.data.msg)
+      }
+        
+    }
+    })
+    
   }
 
   const getRecords=(el)=>{
@@ -32,7 +65,7 @@ export default function Approvehr({allJobs}) {
           <td>{userId===null?'user is deleted by admin':userId.fullname}</td>
           
           <td> {userId===null?'':<div><button className="btn btn-success" onClick={()=>approveHandler(_id,item)}>Approve</button>
-          <button className="btn btn-danger" >Decline</button></div>}</td>
+          <button className="btn btn-danger" onClick={()=>declineHandler(item)}>Decline</button></div>}</td>
           
         </tr>
       )
@@ -45,6 +78,7 @@ export default function Approvehr({allJobs}) {
           <div class="row">
             <div class="col-md-12">
             <div className="card" style={{marginTop:150+"px"}}>
+            <ToastContainer position="top-center" />
                 <div className="card-header card-header-tabs card-header-primary">
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">

@@ -1,37 +1,52 @@
 import React, { useState } from 'react'
 import axiosInstance from '../../../helpers';
-import {Redirect} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Accounthr() {
   const [pass,setPass]=useState('');
   const [new_pass,setNewPass]=useState('');
   const [c_pass,setCPass]=useState('');
-  const [error,setError]=useState('');
-  const [success,setSuccess]=useState('');
+  const history=useHistory()
 
   const submitHandler=(e)=>{
     e.preventDefault();
     const userId=localStorage.getItem('id')
     const token=localStorage.getItem('token')
+
     if(c_pass!==new_pass){
-      setError('Password Not Matched')
-    }
-    const data={pass,new_pass}
-    const config={
+      return toast.error('Password Not Matched')
+    }else{
+      const data={pass,new_pass}
+      const config={
         'headers':{jwt_react:token}
     }
     axiosInstance.put(`/api/hr/changePassword/status/${userId}`,data,config).then(data=>{
       if(data.status===200){
+        toast.success(data.data.msg)
         localStorage.clear()
-        return <Redirect to={'/login'}/>
+        setTimeout(() => {
+          return history.push('/corporate_login')
+        }, 5000);
+        
       }
     }).catch(err=>{
       if(err){
-        err.response.data.error?setError(err.response.data.error)
-        :setError(err.response.data.msg)
+        if(err.response===undefined){
+          return 0;
+        }else{
+          err.response.data.error?toast.error(err.response.data.error)
+          :toast.error(err.response.data.msg)
+        }
+       
     }
       
     })
+    }
+    
+    
   }
     return (
         <div>
@@ -42,6 +57,7 @@ export default function Accounthr() {
           <div class="row">
             <div class="col-md-8">
             <div className="card" style={{marginTop:150+"px"}}>
+            <ToastContainer position="top-center" />
                 <div className="card-header card-header-tabs card-header-primary">
                   <div className="nav-tabs-navigation">
                     <div className="nav-tabs-wrapper">
@@ -50,10 +66,7 @@ export default function Accounthr() {
                   </div>
                   </div>
                   </div>
-                <div className={`${success===''?'alert alert-danger mt-3':'alert alert-success'}` }role="alert" style={error===''?{display:'none'}:{display:'block'}}>
-                 {error!==''? error:success}
-                </div>
-
+               
                 <div class="card-body">
                   <form onSubmit={submitHandler}>
                     <div class="row">

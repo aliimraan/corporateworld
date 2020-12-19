@@ -38,7 +38,7 @@ return (
         <Route path="/hr_dashboard" exact component={hrDashboard} />
         <Route path="/hr_dashboard/approvedec_app" exact component={Approve} />
         <Route path="/hr_dashboard/account" exact component={Account} />
-        <Route path="/contenthr/approve" exact component={Approveuser} />
+        <Route path="/contenthr/approve/:id" exact component={Approveuser} />
         <Route path="/admin_dashboard/view_apps" exact component={adminDashboard} />
         <Route path="/admin_dashboard/approve_apps" exact component={Approvedecline} />
         <Route path="/admin_dashboard/decline_apps" exact component={Decline} />

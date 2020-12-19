@@ -59,13 +59,28 @@ exports.showApprovedJobs=(req,res)=>{
 }
 
 exports.declinedJobs=(req,res)=>{
-    const newDeclinedJobModel=new declinedJobModel(req.body)
-    newDeclinedJobModel.save().then(data=>{
-        return res.status(200).json({data})
-        //send email to user that u r not selected
+    const {role,profile,description,userId}=req.body
+    appliedJobModel.findOneAndRemove({userId:userId._id}).then(data=>{
+        if(data){
+            const newDeclinedJobModel=new declinedJobModel({role,profile,description,userId:userId._id})
+            newDeclinedJobModel.save().then(data=>{
+                res.status(200).json({msg:'candidate declined successfully'})
+                transporter.sendMail({
+                    to:'zainsaifi413@gmail.com',
+                    subject:'regarding job application',
+                    text:'sorry you are not selected ..work hard and try again dont be upset'
+                },(err,result)=>{
+                    if(err) throw err
+                    console.log(result)
+                })
+            }).catch(err=>{
+                 return res.status(400).json({err,msg:'not declined '})
+            })
+        }
     }).catch(err=>{
-        res.status(400).json({err})
+        console.log(err)
     })
+   
    
 }
 exports.showDeclinedJobs=(req,res)=>{
