@@ -1,33 +1,45 @@
 import React,{useState} from 'react'
 import axiosInstance from '../../../helpers'
-import FlashMessage from 'react-flash-message'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useHistory} from 'react-router-dom'
+
 
 export default function Jobsadmin() {
     
     const [role,setRole]=useState('')
     const [profile,setProfile]=useState('')
     const [description,setDescription]=useState('')
-    const [error,setError]=useState('')
-    const [showMessage,setShowMessage]=useState(false)
+    const history=useHistory()
+   
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        if(role===''||profile===''||description===''){
-            return setError('Empty field not allowed')
-        }
-        const formdata={role,profile,description}
-        const token=localStorage.getItem('token');
-        const config={
-            'headers':{'jwt_react':token}
-        }
-        axiosInstance.post('/application/admin/job/create',formdata,config).then(data=>{
-            if(data.status===200){
-                setShowMessage(true)
-                setTimeout(() => setShowMessage(false),5000);
+        
+            const formdata={role,profile,description}
+            const token=localStorage.getItem('token');
+            const config={
+                'headers':{'jwt_react':token}
             }
-        }).catch(err=>{
-            console.log(err)
-        })
+            axiosInstance.post('/application/admin/job/create',formdata,config).then(data=>{
+                if(data.status===200){
+                    toast.success(data.data.msg)
+                    setTimeout(() =>history.go(0),5000);
+                }
+            }).catch(err=>{
+                 if(!err){
+                     console.log('all is well')
+                 }else{
+                     if(err.response===undefined){
+                         return 0;
+                     }else{
+                         err.response.data.error?toast.error(err.response.data.error)
+                         :toast.error(err.response.data.msg)
+                     }
+                   
+                 }
+             })
+       
     }
     return (
         <div>
@@ -43,14 +55,11 @@ export default function Jobsadmin() {
                         </div>
                         </div>
                         <div className="card-body">
+                        <ToastContainer/>
                         <div className="tab-content">
                             <div className="tab-pane active" id="profile">
                     <form onSubmit={submitHandler}>
-                                 <div className="flashdiv" style={showMessage===false?{display:'block'}:{display:'block'}}>
-                                    <FlashMessage duration={5000}>
-                                    <strong>Hello Therichpost!</strong>
-                                    </FlashMessage>
-                                </div>
+                               
             <div className="form-group">
                 <label for="exampleFormControlInput1">Job Title</label>
                 <input type="text" className="form-control"  placeholder="Enter Job Title" onChange={(e)=>setRole(e.target.value)}/>

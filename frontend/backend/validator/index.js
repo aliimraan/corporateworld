@@ -62,3 +62,28 @@ exports.loginRequestValidatorResult=(req,res,next)=>{
     }
     next()
 }
+
+exports.jobRequestValidator=[
+    check('role')
+    .notEmpty()
+    .withMessage('Job Title Is Required'),
+
+    check('profile')
+    .notEmpty()
+    .withMessage('Job Designation Is Required'),
+
+    check('description')
+    .notEmpty()
+    .withMessage('Job Details Is Required')
+    .isLength({min:5})
+    .withMessage('Job Detail mustbe atleast 5 charecter long')
+
+];
+
+exports.jobRequestValidatorResult=(req,res,next)=>{
+    const error=validationResult(req)
+    if(error.array().length>0){
+        return res.status(400).json({error:error.array()[0].msg})
+    }
+    next()
+}
