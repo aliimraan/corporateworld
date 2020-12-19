@@ -32,7 +32,9 @@ export default function Login() {
             }
             
         }).catch(err=>{ 
-            if(err){
+            if(!err){
+                console.log('all is well')
+            }else{
                 err.response.data.error?toast.error(err.response.data.error)
                 :toast.error(err.response.data.msg)
             }

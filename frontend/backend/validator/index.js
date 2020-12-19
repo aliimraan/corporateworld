@@ -4,24 +4,33 @@ exports.signUpRequestValidator=[
     check('fullname')
     .notEmpty()
     .withMessage('fullname is required'),
+
     check('username')
     .notEmpty()
     .withMessage('username is required'),
+
+    check('email')
+    .notEmpty()
+    .withMessage('email is required')
+    .isEmail()
+    .withMessage('valid email is required'),
+
+    check('pass')
+    .notEmpty()
+    .withMessage('password is required')
+    .isLength({min:4})
+    .withMessage('password must be atleast 4 character long'),
+
     check('dob')
     .notEmpty()
     .withMessage('dob is required'),
+
     check('mobile')
     .notEmpty()
-    .withMessage('mobile is required'),
-    check('email')
-    .notEmpty()
-    .withMessage('')
-    .isEmail()
-    .withMessage('valid email is required'),
-    check('pass')
-    .notEmpty()
-    .isLength({min:4})
-    .withMessage('password must be atleast 3 character long'),
+    .withMessage('mobile is required')
+    .isLength({min:10,max:10})
+    .withMessage('valid number is required')
+
 ];
 
 exports.signUpRequestValidatorResult=(req,res,next)=>{
@@ -35,11 +44,13 @@ exports.signUpRequestValidatorResult=(req,res,next)=>{
 exports.loginRequestValidator=[
     check('email')
     .notEmpty()
+    .withMessage('email is required')
     .isEmail()
-    .withMessage('email is required'),
+    .withMessage('valid email is required'),
 
     check('pass')
     .notEmpty()
+    .withMessage('password is required')
     .isLength({min:4})
     .withMessage('password must be atleast 3 character long'),
 ];

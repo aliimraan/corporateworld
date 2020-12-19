@@ -15,22 +15,29 @@ export default function Register() {
     const [dob,setDob]=useState('');
     const [mobile,setMobile]=useState('');
     const [c_pass,setConfirmpassword]=useState('');
-    const [error,setError]=useState('')
     const history=useHistory()
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        
-       
         if(pass!==c_pass){
-            return setError('Password not Matched')
+            return toast.error('Password not Matched')
         }
         
-        const data={fullname,username,email,pass,dob,mobile}
-        axiosInstance.post('/api/register/create',data).then(data=>{
-            console.log(data)
+        const formData={fullname,username,email,pass,dob,mobile}
+        axiosInstance.post('/api/register/create',formData).then(data=>{
+            if(data.status===201){
+                return history.push('/login')
+            }
         }).catch(err=>{ 
-            setError(err.response.data.error)
+            if(err){
+                err.response.data.error?toast.error(err.response.data.error)
+                :toast.error(err.response.data.msg)
+            }
+            if(err.response.status===500){
+               if(err.response.data.err.code===11000){
+                    return toast.error(Object.entries(err.response.data.err.keyValue)[0][1] +' is already in use')
+               }
+            }
         })
         
     }
@@ -51,18 +58,16 @@ export default function Register() {
                       <div className="col-md-7 registerarea">
                               <h2>Register</h2>
                               <div className="login-form">
-                              <div className="alert alert-danger" role="alert" style={error===''?{display:"none"}:{display:"block"}}>
-                                {error}
-                            </div>
+                              <ToastContainer position="top-center" />
                                   <form onSubmit={submitHandler}>
                                   <Row>
                         <Col md={12}> <Input type="text" placeholder="Enter Name" label="Full Name" onChange={(e)=>setName(e.target.value)} /></Col>
                         <Col md={6}> <Input type="text" placeholder="Enter Username" label="Username" onChange={(e)=>setUsername(e.target.value)} /></Col>
+                        <Col md={6}> <Input type="email" placeholder="Enter Email" label="E-mail" onChange={(e)=>setEmail(e.target.value)} /></Col>
                         <Col md={6}> <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPassword(e.target.value)} /></Col>
                         <Col md={6}> <Input type="password" placeholder="Confirm Password" label="Confirm Password" onChange={(e)=>setConfirmpassword(e.target.value)} /></Col>
                         <Col md={6}> <Input type="date" placeholder="Date Of Birth" label="Date Of Birth" onChange={(e)=>setDob(e.target.value)} /></Col>
                         <Col md={6}> <Input type="number" placeholder="Enter Mobile Number" label="Mobile" onChange={(e)=>setMobile(e.target.value)} /></Col>
-                        <Col md={6}> <Input type="email" placeholder="Enter Email" label="E-mail" onChange={(e)=>setEmail(e.target.value)} /></Col>
                         <Col md={6}>   <button type="submit" className="btn btn-danger">Sign Up</button></Col>
                         <Col md={6}>  <button type="reset" className="btn btn-danger">Reset</button></Col> 
 

@@ -41,7 +41,7 @@ export default function Forget() {
                         <h3><i className="fa fa-lock fa-4x"></i></h3>
                         <h2 className="text-center">Forgot Password?</h2>
                         <p>You can reset your password here.</p>
-                        <ToastContainer position="top-center"/>
+                        <ToastContainer />
                         <div className="panel-body">
                           <form onSubmit={submitHandler} id="register-form" role="form" autocomplete="off" className="form" method="post">
                             <Input type="text" placeholder="Enter New Password" onChange={(e)=>setPass(e.target.value)} />

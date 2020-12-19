@@ -91,7 +91,7 @@ export default function Image(props) {
                 <div key={index} id="card_main">
 
             <div className="card-wrapper inner">
-                <div className="card">
+                <div className="mycard">
                     <div className="card-image" >
                     <div className="role">{item.role}</div>
                     <div className="profile">{item.profile}</div>

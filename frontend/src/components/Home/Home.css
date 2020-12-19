@@ -41,7 +41,7 @@ section .showcase_area{
   color: white;
   background:#290058;
 }
-section .showcase_area .text_side{
+section .showcase_area .text_side h6{
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 import './corporate.css'
 import axiosInstance from '../../helpers'
 import Input from '../../container/Input'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function Corporate() {
 	const [role,setRole]= useState('')
@@ -16,21 +18,26 @@ export default function Corporate() {
 		
 		axiosInstance.post('/api/user/login',FormDate).then(data=>{
 			if(data.status===200){
-				console.log(data.data.user)
 				const {email,fullname,_id}=data.data.user
 				localStorage.setItem('token',data.data.token)
 				localStorage.setItem('fullname',fullname)
 				localStorage.setItem('email',email)
 				localStorage.setItem('id',_id)
-				localStorage.setItem('role',role)
-				if(role==='admin'){
+				localStorage.setItem('role',data.data.user.role)
+				if(data.data.user.role==='admin'){
 					return history.push('/admin_dashboard/view_apps')
 				}else{
-					return history.push('hr_dashboard')
+					return history.push('/hr_dashboard')
 				}
 			}
 		}).catch(err=>{
-			console.log(err)
+			if(!err){
+                return 0;
+            }else{
+                err.response.data.error?toast.error(err.response.data.error)
+                :toast.error(err.response.data.msg)
+            }
+           
 		})
 	}
     return (
@@ -41,22 +48,24 @@ export default function Corporate() {
 					<div className="hrarea">
 				<form onSubmit={submitHandler}>
 				<h2>HR LOGIN</h2>
+				<ToastContainer position="top-center" />
 				<Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                 <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPass(e.target.value)} />
-				<Link className="forget" to={`/login/forget_pass`}>Forget Password</Link>
-				<button type="submit" className="btn btn-primary">Login</button>
-
+                <button type="submit" className="btn btn-primary">Login</button>
 				</form>
+				<Link className="forget" to="/login/forget_pass">Forget Password</Link>
 				</div>
 				<div className="adminlogin">
 				<form onSubmit={submitHandler}>
 				<h2>ADMIN LOGIN</h2>
+				<ToastContainer position="top-center" />
 				<Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                 <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPass(e.target.value)} />
 				<Link className="forget" to={`/login/forget_pass`}>Forget Password</Link>
 				<button type="submit" className="btn btn-primary">Login</button>
 
 				</form>
+				
 				</div>
 				</div>
 			</div>

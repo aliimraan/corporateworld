@@ -28,7 +28,7 @@ export default function Home() {
          <section>
             <div className="showcase_area">
               <div className="text_side">
-                start your<br/> carrier now
+               <h6> start your<br/> carrier now</h6>
                 <p>Lorem Ipsum is simply dummy text of the printing and </p>
                 <span className="reg"><Link className="link_btn text-decoration-none" to ={`./register`}>get started</Link></span>
               </div>
