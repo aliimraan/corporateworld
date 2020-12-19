@@ -47,7 +47,7 @@ export default function Approveadmin({record}) {
                     </div>
                   </div>
                   </div>
-                  </div>
+                  
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
@@ -63,6 +63,7 @@ export default function Approveadmin({record}) {
                         {showRecord(record)}
                       </tbody>
                       </table>
+                      </div>
                       </div>
                       </div>
                       </div>

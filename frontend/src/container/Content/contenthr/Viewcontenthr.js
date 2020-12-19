@@ -41,7 +41,7 @@ export default function Viewcontenthr({allJobs}) {
                     </div>
                   </div>
                   </div>
-                  </div>
+                  
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
@@ -56,6 +56,7 @@ export default function Viewcontenthr({allJobs}) {
                         {getRecords(allJobs)}
                       </tbody>
                       </table>
+                      </div>
                       </div>
                       </div>
                       </div>

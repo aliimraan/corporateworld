@@ -65,7 +65,7 @@ export default function Accounthr() {
                     </div>
                   </div>
                   </div>
-                  </div>
+                  
                
                 <div class="card-body">
                   <form onSubmit={submitHandler}>
@@ -98,6 +98,7 @@ export default function Accounthr() {
                     <div class="clearfix"></div>
                   </form>
                 </div>
+              </div>
               </div>
             </div>
             

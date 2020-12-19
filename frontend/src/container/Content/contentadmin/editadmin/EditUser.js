@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {Container,Row,Col} from 'react-bootstrap'
 import axiosInstance from '../../../../helpers';
 import Input from '../../../Input';
-
+import '../../../../components/login/login.css'
 
 
 export default function EditUser(props) {
@@ -56,43 +56,36 @@ export default function EditUser(props) {
     
     return (
         <div>
-        <Container>
-            <Row>
-              <div className="card card1">
-                <div className="row justify-content-center my-5">
-                    <div className="col-md-12 col-10 my-8">
-                        <div className="row justify-content-center px-3 mb-3"> </div>
-                        <h3 className="mb-5 text-center heading">Edit Profile</h3>
-                        <h6 className="msg-info">Update Fields</h6>
-                            
-                    <form onSubmit={submitHandler}>
-                    <Row>
-                        <Col md={6}> <Input type="text" placeholder="Enter Name" label="Full Name" value={fullname} onChange={(e)=>setName(e.target.value)} /></Col>
-                        <Col md={6}> <Input type="text" placeholder="Enter Username" label="Username" value={username} onChange={(e)=>setUsername(e.target.value)} /></Col>
-                        <Col md={6}> <Input type="number" placeholder="Enter Mobile Number" label="Mobile" value={mobile} onChange={(e)=>setMobile(e.target.value)} /></Col>
-                        <Col md={6}> <Input type="email" placeholder="Enter Email" label="E-mail" value={email} onChange={(e)=>setEmail(e.target.value)} /></Col>
 
-                    </Row>
-                    
-                    
-                    <Row>    
-                            <Col md={6}>   <button className="btn-block btn-color">Update</button></Col>
-                            <Col md={6}>  <button className="btn-block btn-color">Cancel</button></Col> 
-                     </Row>  
+<div id="login">
+          
+          <div className ="row">
+              <div className ="col-md-10 offset-md-1">
+                  <div className="row">
+                      
+                      <div className="col-md-7 loginarea">
+                              <h2>Edit Users</h2>
+                              <ToastContainer position="top-center" />
+                              <div className="login-form">
+                                  <form onSubmit={submitHandler}>
+                                  <Input type="text" placeholder="Enter Name" label="Full Name" value={fullname} onChange={(e)=>setName(e.target.value)} />
+                                  <Input type="text" placeholder="Enter Username" label="Username" value={username} onChange={(e)=>setUsername(e.target.value)} />
+                                  <Input type="number" placeholder="Enter Mobile Number" label="Mobile" value={mobile} onChange={(e)=>setMobile(e.target.value)} />
+                                  <Input type="email" placeholder="Enter Email" label="E-mail" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                                  <button className="btn btn-primary">Cancel</button> 
 
-                              
+                                  <button className="btn btn-primary">Update</button>
 
-              
-                    
-                    </form>
-                    </div>
-                    </div>
-                    </div>
-      
-            
-  </Row>
- 
-</Container>
+                              </form>
+                             
+                      </div>
+                      
+                  </div>
+                  </div> 
+          </div>
+      </div>
+      </div>
+       
            
         </div>
     )

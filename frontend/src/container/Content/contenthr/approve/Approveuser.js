@@ -42,47 +42,40 @@ export default function Approveuser(props) {
        }
     
     return (
-        <div>
-        <Container>
-            <Row>
-              <div className="card card1">
-                <div className="row justify-content-center my-5">
-                    <div className="col-md-12 col-10 my-8">
-                        <div className="row justify-content-center px-3 mb-3"> </div>
-                        <h3 className="mb-5 text-center heading">Appoint For Interview</h3>
-                        <div class="alert alert-danger" role="alert" style={error===''?{display:'none'}:{display:'block'}}>
+
+        
+       <div>
+       <div id="login">
+          
+          <div className ="row">
+              <div className ="col-md-10 offset-md-1">
+                  <div className="row">
+                      
+                      <div className="col-md-7 loginarea">
+                              <h2>Appoint For InterView</h2>
+                              <div className="login-form">
+                              <div class="alert alert-danger" role="alert" style={error===''?{display:'none'}:{display:'block'}}>
                         {error}
                         </div>
-                        <h6 className="msg-info">Schedule the Interview</h6>
-                            
-                    <form onSubmit={submitHandler}>
-                    <Row>
-                        <Col md={12}> <Input type="date" placeholder="Interview Date" label="Interview Date" onChange={(e)=>setDate(e.target.value)} /></Col>
-                        <Col md={12}> <Input type="text" placeholder="Conference Link" label="Conference Link" onChange={(e)=>setCL(e.target.value)} /></Col>
+                                  <form onSubmit={submitHandler}>
+                                  <Input type="date" placeholder="Interview Date" label="Interview Date" onChange={(e)=>setDate(e.target.value)} />
+                                 <Input type="text" placeholder="Conference Link" label="Conference Link" onChange={(e)=>setCL(e.target.value)} />
+                                  <button className="btn btn-primary">Cancel</button> 
 
-                    </Row>
+                                  <button className="btn btn-primary">Send</button>
 
-                    
-                    
-                    <Row>    
-                            <Col md={6}>   <button className="btn-block btn-color">Send</button></Col>
-                            <Col md={6}>  <button className="btn-block btn-color">Cancel</button></Col> 
-                     </Row>  
-
-                              
-
-              
-                    
-                    </form>
-                    </div>
-                    </div>
-                    </div>
-      
-            
-  </Row>
- 
-</Container>
-           
+                              </form>
+                             
+                      </div>
+                      
+                  </div>
+                  </div> 
+          </div>
+      </div>
+           </div>
         </div>
+           
+        
+        
     )
 }

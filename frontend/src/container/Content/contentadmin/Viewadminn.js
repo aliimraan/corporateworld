@@ -112,7 +112,7 @@ export default function Viewadminn({hrList,userList}) {
         </button>
       </h2>
     </div>
-    <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div id="collapseTwo" className="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div className="card-body">
       <div class="table-responsive">
                     <table class="table">
