@@ -20,6 +20,9 @@ import Decline from './components/dashboards/adminDashboard/Decline';
 import Editadmin from './container/Content/contentadmin/editadmin/Editadmin';
 import EditUser from './container/Content/contentadmin/editadmin/Editadmin';
 import Reset from './components/forget_pass/Reset';
+import Viewadmin from './components/dashboards/Superadmin/Viewadmin';
+import Viewhr from './components/dashboards/Superadmin/Viewhr';
+import Viewuser from './components/dashboards/Superadmin/Viewuser';
 
 
 function App() {
@@ -46,6 +49,11 @@ return (
         <Route path="/contentadmin/editadmin/:id" exact component={Editadmin} />
         <Route path="/admin/edituser/:id" exact component={EditUser} />
         <Route path="/reset/password/:token" exact component={Reset} />
+        <Route path="/create_hr"  exact component={Viewhr} />
+        <Route path="/create_admin" exact component={Viewadmin} />
+        <Route path="/admin_hr" exact component={Viewuser} />
+
+
       </Switch>
     </div>
 )

@@ -52,7 +52,8 @@ export default function Register() {
                       <div className="col-md-5 adminarea">
                           <h1>Already Have Account</h1>
                           <h3>Login Here</h3>
-                          
+                          <Link className="btn btn-primary" to ={'/create_hr'}>Login Here</Link>
+
                           <Link className="btn btn-warning" to={`/login`}>Login Now</Link>
                       </div>
                       <div className="col-md-7 registerarea">
