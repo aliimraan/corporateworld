@@ -28,7 +28,7 @@ import './Home.css'
   
       <Navbar style={{backgroundColor : '#1a0038',padding:'25px'}} dark expand="md">
       <Container>
-        <NavbarBrand href="/">logo</NavbarBrand>
+        <NavbarBrand href="/">JOB PORTOL</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav  className="ml-auto" navbar >

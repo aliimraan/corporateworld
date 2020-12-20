@@ -29,7 +29,7 @@ export default function Contact() {
                                 
                                </div>
                               
-                               <div className="line"><button>send <img src="/assets/images/send.svg"/></button></div>
+                               <div className="line"><button>Send US <img src="/assets/images/send.svg"/></button></div>
                             </form>
                         </div>
                         </div>
@@ -41,7 +41,7 @@ export default function Contact() {
                             
                         <div className="title">
                             <img src="/assets/images/email.svg"/>
-                            <h3>contact me</h3>
+                            <h3>contact us</h3>
                         </div>
                         <form >
                            <div className="line">

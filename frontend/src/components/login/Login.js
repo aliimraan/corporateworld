@@ -60,9 +60,8 @@ export default function Login() {
                                         <form onSubmit={submitHandler}>
                                     <Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />
                                     <Input type="password" placeholder="Enter Password" label="Password" onChange={(e)=>setPassword(e.target.value)} />
-                                    <Link className="forget" to={`/login/forget_pass`}>Forget Password</Link><br />
+                                    <Link className="forget" to={`/login/forget_pass`}>Forget Password</Link><br/>
                                     <button type="submit" className="btn btn-primary">Login</button>
-
                                     </form>
                                    
                             </div>

@@ -97,7 +97,9 @@
         height : 100%;
     }
   }
-  
+  .reg{
+      float: left !important;
+  }
 
 .loginarea h2 , .registerarea h2{
     text-align: center;

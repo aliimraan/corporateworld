@@ -130,12 +130,13 @@ section .showcase_area .text_side .reg .link_btn{
 }
 @media only screen and (max-width: 600px) {
   .heading {
-    font-size: 1.8rem ;
+    font-size: 4rem ;
+    margin-top: -20px;
   }
   section .showcase_area .text_side {
     
     font-size: 2rem;
-    
+    margin-top: 80px;
   }
   .contact{
     height: 100%;
