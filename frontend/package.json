@@ -19,7 +19,6 @@
     "react-toastify": "^6.2.0",
     "reactstrap": "^8.7.1",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -46,7 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "cross-env": "^7.0.3"
-  }
+  "devDependencies": {}
 }

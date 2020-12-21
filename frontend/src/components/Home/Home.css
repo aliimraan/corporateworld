@@ -157,11 +157,3 @@ section .showcase_area .text_side .reg .link_btn{
   
   
 }
-
-input[type="checkbox"]
-{
-  -webkit-animation: none;
-  visibility: hidden;
-  display: none;
-
-}

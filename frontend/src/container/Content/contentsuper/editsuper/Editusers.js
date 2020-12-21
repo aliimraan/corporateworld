@@ -3,13 +3,13 @@ import {Container,Row,Col} from 'react-bootstrap'
 import axiosInstance from '../../../../helpers';
 import Input from '../../../Input';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import '../../contentadmin/editadmin/node_modules/react-toastify/dist/ReactToastify.css';
 import { Redirect } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
 
 
 
-export default function EditUser(props) {
+export default function Editusers(props) {
     const [email,setEmail]=useState('hello');
     const [username,setUsername]=useState('');
     const [fullname,setName]=useState('');
@@ -65,7 +65,7 @@ export default function EditUser(props) {
           <div className ="row">
               <div className ="col-md-10 offset-md-1">
                   <div className="row">
-                  <ToastContainer />
+                  <ToastContainer/>
                       <div className="col-md-7 loginarea">
                               <h2>Edit Users</h2>
                               <div className="login-form">
