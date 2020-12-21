@@ -24,6 +24,7 @@ import Viewadmin from './components/dashboards/Superadmin/Viewadmin';
 import Viewhr from './components/dashboards/Superadmin/Viewhr';
 import Viewuser from './components/dashboards/Superadmin/Viewuser';
 import Superadmin from './components/Superadmin Login/Superadmin';
+import Edits from './container/Content/contentsuper/editAll/Edits';
 
 
 function App() {
@@ -54,6 +55,7 @@ return (
         <Route path="/create_admin" exact component={Viewadmin} />
         <Route path="/admin_hr" exact component={Viewuser} />
         <Route path="/super_admin" exact component={Superadmin} />
+        <Route path="/superadmin/area/edit/:id" exact component={Edits} />
 
 
       </Switch>

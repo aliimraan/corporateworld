@@ -18,9 +18,9 @@ export default function Superadmin() {
         axiosInstance.post('/api/user/login',data).then(data=>{
             if(data.status===200){
                 const {role}=data.data.user
-                if(role==='admin'||role==='admin')
+                if(role==='admin'||role==='hr'||role==='user')
                 {
-                    return toast.error('Only users are allowed to login')
+                    return toast.error('Only Super admin can access this')
                 }
 
                 localStorage.setItem('token',data.data.token)
@@ -28,7 +28,7 @@ export default function Superadmin() {
                 localStorage.setItem('fullname',data.data.user.fullname)
                 localStorage.setItem('id',data.data.user._id)
                 localStorage.setItem('role',data.data.user.role)
-                history.push('/')
+                history.push('/create_admin')
             }
             
         }).catch(err=>{ 
@@ -51,7 +51,7 @@ export default function Superadmin() {
                             
                             <div className="col-md-7 loginarea">
                                     <h2>Login Here</h2>
-                                    <ToastContainer position="top-center" />
+                                    <ToastContainer  />
                                     <div className="login-form">
                                         <form onSubmit={submitHandler}>
                                     <Input type="text" placeholder="Enter Email" label="Email" onChange={(e)=>setEmail(e.target.value)} />

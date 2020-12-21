@@ -19,7 +19,6 @@ export default function navb({label}) {
             <span className="navb-toggler-icon icon-bar"></span>
           </button>
           <div className="collapse navb-collapse justify-content-end">
-            
             <ul className="navb-nav">
          
             

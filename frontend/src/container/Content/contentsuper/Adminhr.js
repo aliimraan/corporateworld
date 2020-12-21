@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import axiosInstance from '../../../helpers'
 
-export default function Adminhr({hrList,userList}) {
+export default function Adminhr({adminList,hrList,userList}) {
   
   const deleteHandler=(id)=>{
     const token=localStorage.getItem('token')
@@ -15,6 +15,33 @@ export default function Adminhr({hrList,userList}) {
       }
     }).catch(err=>{
       console.log(err)
+    })
+  }
+
+  const showAdminList=(el)=>{
+    if(el[0]===undefined){
+      return<h4>loading...</h4>
+    }
+    
+    return el[0].data.map((item,index)=>{
+      if(el[0].data===undefined){
+        return <h3>loading...</h3>
+      }
+      
+      const {fullname,email,mobile,createdAt,_id}=item
+      index++
+      return (
+        <tr key={index}>
+          <td>{index}</td>
+          <td>{fullname}</td>
+          <td>{email}</td>
+          <td>{mobile}</td>
+          <td>{createdAt.substring(0,10)}</td>
+          <td><Link to={`/superadmin/area/edit/${_id}`} className="btn btn-success">edit</Link>
+              <button className="btn btn-danger" onClick={()=>deleteHandler(_id)}>delete</button>
+          </td>
+        </tr>
+      )
     })
   }
 
@@ -37,7 +64,7 @@ export default function Adminhr({hrList,userList}) {
           <td>{email}</td>
           <td>{mobile}</td>
           <td>{createdAt.substring(0,10)}</td>
-          <td><Link to={`/contentadmin/editadmin/${_id}`} className="btn btn-success">edit</Link>
+          <td><Link to={`/superadmin/area/edit/${_id}`} className="btn btn-success">edit</Link>
               <button className="btn btn-danger" onClick={()=>deleteHandler(_id)}>delete</button>
           </td>
         </tr>
@@ -64,7 +91,7 @@ export default function Adminhr({hrList,userList}) {
           <td>{email}</td>
           <td>{mobile}</td>
           <td>{createdAt.substring(0,10)}</td>
-          <td><Link to={`/admin/edituser/${_id}`} className="btn btn-success">edit</Link>
+          <td><Link to={`/superadmin/area/edit/${_id}`} className="btn btn-success">edit</Link>
               <button className="btn btn-danger" onClick={()=>deleteHandler(_id)}>delete</button>
           </td>
         </tr>
@@ -98,7 +125,7 @@ export default function Adminhr({hrList,userList}) {
                         <th>ACTIONS</th>
                       </thead>
                       <tbody class=" text-primary">
-                        {showHrList(hrList)}
+                        {showAdminList(adminList)}
                       </tbody>
                       </table>
                       </div>      

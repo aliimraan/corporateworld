@@ -130,6 +130,14 @@ exports.showAllRegisteredHr=(req,res)=>{
     })
 }
 
+exports.showAllRegisteredAdmins=(req,res)=>{
+    registerModel.find({role:'admin'}).then(data=>{
+        res.status(200).json({data})
+    }).catch(err=>{
+        res.status(400).json({err})
+    })
+}
+
 exports.showAllRegisteredUsers=(req,res)=>{
     registerModel.find({role:'user'}).then(data=>{
         res.status(200).json({data})
@@ -156,7 +164,6 @@ exports.updateRegisteredUsers=(req,res)=>{
         username:username,
         email:email,
         mobile:mobile
-
     }).then(data=>{
         return res.status(200).json({data,msg:"Profile Updated"})
     }).catch(err=>{
@@ -182,12 +189,11 @@ exports.forgetPassword=(req,res)=>{
         const {email}=req.body
         registerModel.findOne({email:email}).then(data=>{
             if(!data){   
-                return res.status(400).json({err,msg:'Email doesnt exits'})
+                return res.status(400).json({err,msg:`Email doesn't exits`})
             }
             registerModel.findOneAndUpdate({email:email},{ resetToken:token,expired:Date.now()+900000}).then(data=>{
                 transporter.sendMail({
-                        to:'aimraan204@gmail.com',
-                        from:'abc@gmail.com',
+                        to:email,
                         subject:'Reset Password',
                         html:`
                         <p>you requested for password change</p>

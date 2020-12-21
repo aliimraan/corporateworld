@@ -11,16 +11,32 @@ import Adminhr from '../../../container/Content/contentsuper/Adminhr'
 export default function Viewuser() {
     const [hrList,setHrList]=useState('')
     const [userList,setUserList]=useState('')
+    const [adminList,setAdminList]=useState('')
     const [Token,SetToken]=useState('')
-    const history=useHistory()
+    const history=useHistory()     
 
-    // useEffect(()=>{
+    useEffect(()=>{
        
-    //     SetToken(localStorage.getItem('token'))
-    //     getHrList()
-    //     getUserList()
-    // },[])
+        SetToken(localStorage.getItem('token'))
+        getHrList()
+        getUserList()
+        getAdminList()
+    },[])
 
+    const getAdminList=()=>{
+        const token=localStorage.getItem('token')
+        const config={
+            'headers':{'jwt_react':token}
+        }
+        axiosInstance.get('/api/admin/registered/show/all',config).then(data=>{
+            setAdminList([data.data])
+        }).catch(err=>{
+            if(err.response.status===400){
+                return history.push('/')
+              }
+        })
+        
+    }
     const getHrList=()=>{
         const token=localStorage.getItem('token')
         const config={
@@ -66,7 +82,7 @@ export default function Viewuser() {
             </Col>
                 <Col md={9}>
                     <Navbar label={"Admin / HR List"} />
-                   <Adminhr hrList={hrList} userList={userList}/>
+                   <Adminhr adminList={adminList} hrList={hrList} userList={userList}/>
                 </Col>
             </Row>
             </div>

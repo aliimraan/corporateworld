@@ -15,6 +15,13 @@ exports.authenticate=(req,res,next)=>{
     
 }
 
+exports.superAdminMiddleware=(req,res,next)=>{
+    console.log(req.user)
+    if(req.user.role!=='super_admin'){
+        return res.status(400).json({msg:"super admin access denied"})
+    }
+    next()
+}
 exports.adminMiddleware=(req,res,next)=>{
     console.log(req.user)
     if(req.user.role!=='admin'){

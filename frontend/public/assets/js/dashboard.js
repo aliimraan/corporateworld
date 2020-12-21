@@ -24,7 +24,8 @@ $(document).ready(function() {
   window_width = $(window).width();
 });
 
-$(document).on('click', '.navbar-toggler', function() {
+$(document).on('click', '.navb-toggler', function() {
+  alert('work');
   $toggle = $(this);
   if (mobile_menu_visible == 1) {
     $('html').removeClass('nav-open');
@@ -85,7 +86,7 @@ md = {
     $sidebar_wrapper = $('.sidebar-wrapper');
 
     if (!mobile_menu_initialized) {
-      $navbar = $('nav').find('.navbar-collapse').children('.navbar-nav');
+      $navbar = $('nav').find('.navb-collapse').children('.navb-nav');
       mobile_menu_content = '';
       nav_content = $navbar.html();
       nav_content = '<ul class="nav navbar-nav nav-mobile-menu">' + nav_content + '</ul>';
