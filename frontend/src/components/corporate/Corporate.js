@@ -4,6 +4,7 @@ import './corporate.css'
 import axiosInstance from '../../helpers'
 import Input from '../../container/Input'
 import { ToastContainer, toast } from 'react-toastify';
+import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 
 
 export default function Corporate() {

@@ -4,10 +4,10 @@ import './login.css'
 import {Link, useHistory} from 'react-router-dom'
 import axiosInstance from '../../helpers'
 import { ToastContainer, toast } from 'react-toastify';
-import '../../../node_modules/react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-export default function Login() {
+export default function Superadmin() {
     const [email,setEmail]=useState('');
     const [pass,setPassword]=useState('');
     const history=useHistory()
@@ -48,11 +48,7 @@ export default function Login() {
                 <div className ="row">
                     <div className ="col-md-10 offset-md-1">
                         <div className="row">
-                            <div className="col-md-5 adminarea">
-                                <h1>Admin Zone</h1>
-                                <h3>Corporate Login</h3>
-                                <Link className="btn btn-warning" to={`/corporate_login`}>Login Now</Link>
-                            </div>
+                            
                             <div className="col-md-7 loginarea">
                                     <h2>Login Here</h2>
                                     <ToastContainer position="top-center" />

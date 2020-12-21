@@ -4,7 +4,8 @@ import Input from '../../../../container/Input';
 import axiosInstance from '../../../../helpers';
 import { ToastContainer, toast } from 'react-toastify';
 import {useHistory} from 'react-router-dom'
-import 'react-toastify/dist/ReactToastify.css';
+import '../../../../../node_modules/react-toastify/dist/ReactToastify.css';
+
 
 
 

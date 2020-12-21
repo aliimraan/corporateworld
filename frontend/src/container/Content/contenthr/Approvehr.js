@@ -2,7 +2,7 @@ import React from 'react'
 import {useHistory} from 'react-router-dom'
 import axiosInstance from '../../../helpers';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import '../../../../node_modules/react-toastify/dist/ReactToastify.css';
 
 
 

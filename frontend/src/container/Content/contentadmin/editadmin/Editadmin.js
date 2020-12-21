@@ -4,6 +4,7 @@ import axiosInstance from '../../../../helpers';
 import Input from '../../../Input';
 import '../../../../components/login/login.css'
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Editadmin(props) {

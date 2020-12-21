@@ -5,7 +5,7 @@ import {Link, useHistory} from 'react-router-dom'
 import axiosInstance from '../../helpers/index'
 import '../login/login.css'
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
     const [email,setEmail]=useState('');
@@ -52,7 +52,6 @@ export default function Register() {
                       <div className="col-md-5 adminarea">
                           <h1>Already Have Account</h1>
                           <h3>Login Here</h3>
-                          <Link className="btn btn-primary" to ={'/create_hr'}>Login Here</Link>
 
                           <Link className="btn btn-warning" to={`/login`}>Login Now</Link>
                       </div>

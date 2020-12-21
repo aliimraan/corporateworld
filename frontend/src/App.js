@@ -18,11 +18,12 @@ import Approvedecline from './components/dashboards/adminDashboard/Approvedeclin
 import Jobs from './components/dashboards/adminDashboard/Jobs';
 import Decline from './components/dashboards/adminDashboard/Decline';
 import Editadmin from './container/Content/contentadmin/editadmin/Editadmin';
-import EditUser from './container/Content/contentadmin/editadmin/Editadmin';
+import EditUser from './container/Content/contentadmin/editadmin/EditUser';
 import Reset from './components/forget_pass/Reset';
 import Viewadmin from './components/dashboards/Superadmin/Viewadmin';
 import Viewhr from './components/dashboards/Superadmin/Viewhr';
 import Viewuser from './components/dashboards/Superadmin/Viewuser';
+import Superadmin from './components/Superadmin Login/Superadmin';
 
 
 function App() {
@@ -52,6 +53,7 @@ return (
         <Route path="/create_hr"  exact component={Viewhr} />
         <Route path="/create_admin" exact component={Viewadmin} />
         <Route path="/admin_hr" exact component={Viewuser} />
+        <Route path="/super_admin" exact component={Superadmin} />
 
 
       </Switch>
