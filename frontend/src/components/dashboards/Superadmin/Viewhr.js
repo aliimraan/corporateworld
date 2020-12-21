@@ -12,7 +12,16 @@ export default function Viewhr() {
     const [Token,SetToken]=useState('')
     const history=useHistory()
     
-
+    useEffect(()=>{ 
+        if(localStorage.getItem('role')!=='super_admin'){
+            return history.push('/login')
+        }else{
+            if(!localStorage.getItem('token')){
+                return history.push('/super_admin')
+            }
+        }
+        
+    },[])
 
     return (
         
@@ -23,14 +32,14 @@ export default function Viewhr() {
                 [
                     {label:'ADD ADMIN',icon:'dashboard',link:'/create_admin'},
                     {label:'ADD HR',icon:'table',link:'/create_hr',active:"active"},
-                    {label:'ADMIN/HR',icon:'table',link:'/admin_hr'},
+                    {label:'SHOW ALL',icon:'table',link:'/admin_hr'},
                 ]
             } 
 
             />
             </Col>
                 <Col md={9}>
-                    <Navbar label={"Create Admin"} />
+                    <Navbar label={"Create Hr"} />
                    <Createhr />
                 </Col>
             </Row>

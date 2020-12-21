@@ -9,7 +9,16 @@ export default function Viewadmin() {
     const [Token,SetToken]=useState('')
     const history=useHistory()
     
-
+    useEffect(()=>{ 
+        if(localStorage.getItem('role')!=='super_admin'){
+            return history.push('/login')
+        }else{
+            if(!localStorage.getItem('token')){
+                return history.push('/super_admin')
+            }
+        }
+        
+    },[])
         
     
     return (
@@ -21,7 +30,7 @@ export default function Viewadmin() {
                 [
                     {label:'ADD ADMIN',icon:'dashboard',link:'/create_admin',active:"active"},
                     {label:'ADD HR',icon:'table',link:'/create_hr'},
-                    {label:'ADMIN/HR',icon:'table',link:'/admin_hr'},
+                    {label:'SHOW ALL',icon:'table',link:'/admin_hr'},
                 ]
             } 
 

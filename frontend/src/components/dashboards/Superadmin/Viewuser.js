@@ -16,8 +16,7 @@ export default function Viewuser() {
     const history=useHistory()     
 
     useEffect(()=>{
-       
-        SetToken(localStorage.getItem('token'))
+       SetToken(localStorage.getItem('token'))
         getHrList()
         getUserList()
         getAdminList()
@@ -65,7 +64,7 @@ export default function Viewuser() {
     }
   
     return (
-        Token===null ?<Redirect to="/login" />:
+        Token===null ?<Redirect to="/super_admin" />:
         <div>
         <Row>
             <Col md={3}>
@@ -73,7 +72,7 @@ export default function Viewuser() {
                 [
                     {label:'ADD ADMIN',icon:'dashboard',link:'/create_admin'},
                     {label:'ADD HR',icon:'table',link:'/create_hr'},
-                    {label:'ADMIN/HR',icon:'table',link:'/admin_hr',active:"active"},
+                    {label:'SHOW ALL',icon:'table',link:'/admin_hr',active:"active"},
 
                 ]
             } 
@@ -81,7 +80,7 @@ export default function Viewuser() {
             />
             </Col>
                 <Col md={9}>
-                    <Navbar label={"Admin / HR List"} />
+                    <Navbar label={"Show All List"} />
                    <Adminhr adminList={adminList} hrList={hrList} userList={userList}/>
                 </Col>
             </Row>
